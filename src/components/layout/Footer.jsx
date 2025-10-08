@@ -13,7 +13,7 @@ export const Footer = () => {
         <a href="#top" className="footer-btn">Volver arriba</a>
       </div>
       <div>
-        Hecho por Antonio, Alvaro y
+        Hecho por Antonio, Alvaro y Joaquin
       </div>
     </footer>
   )
