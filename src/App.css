@@ -1,0 +1,41 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+}
+
+/* Estilo del header */
+.header {
+  text-align: center;       /* Centra el contenido */
+  padding: 30px 20px;       /* Espaciado arriba/abajo y a los lados */
+
+  border-bottom: 2px solid #ddd; /* Línea debajo del header */
+  border: 2px solid #333;
+}
+#id {
+  background-color: black;
+  border: 2px solid;
+}
+
+
+/* Título principal */
+.header h1 {
+  font-size: 2.5rem;        /* Tamaño grande */
+  margin: 0;                /* Sin margen extra */
+  color: #333;              /* Color del texto */
+}
+
+/* Subtítulo */
+.header h2 {
+  font-size: 1.5rem;        /* Más pequeño que h1 */
+  margin-top: 10px;         /* Separación del h1 */
+  color: #666;              /* Color más claro */
+  font-weight: normal;      /* No tan grueso */
+}
+
+.ingredientes-contenedor {
+  padding: 60px;
+}
