@@ -1,9 +1,9 @@
 import React from "react";  
 import { Routes, Route, BrowserRouter, Navigate, Link} from "react-router-dom";
-import { Inicio } from "../components/pages/Inicio";
-import { Ingredientes } from "../components/pages/Ingredientes";
-import  {MiNevera}  from "../components/pages/MiNevera";
-import { MisRecetas } from "../components/pages/MisRecetas";
+import { Inicio } from "../pages/inicio";
+import { Ingredientes } from "../pages/Ingredientes";
+import  {MiNevera}  from "../pages/MiNevera";
+import { MisRecetas } from "../pages/MisRecetas";
 
 export const Rutas =() => {
     return (
