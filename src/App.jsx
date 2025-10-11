@@ -1,14 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { Ingredientes } from './components/pages/Ingredientes'
+import { Ingredientes } from './pages/Ingredientes.jsx'
 import { Rutas } from './routing/rutas'
-import { Header } from './components/layout/Header'
+import { Header } from './layout/Header.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { MiNevera } from './components/pages/MiNevera'
-import { Inicio } from './components/pages/inicio'
-import { MisRecetas } from './components/pages/MisRecetas'
+import { MiNevera } from './pages/MiNevera'
+import { Inicio } from './pages/inicio'
+import { MisRecetas } from './pages/MisRecetas'
 
 function App() {
 
@@ -16,12 +13,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Inicio/>} />
-          <Route path="/MiNevera" element={<MiNevera/>} />
-          <Route path="/MisRecetas" element={<MisRecetas/>} />
-
-
-          </Routes>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/MiNevera" element={<MiNevera />} />
+          <Route path="/MisRecetas" element={<MisRecetas />} />
+        </Routes>
       </BrowserRouter>
     </div>
   )
