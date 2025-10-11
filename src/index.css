@@ -2,11 +2,9 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(0, 2, 3, 0.87);
   background-color: #419ff7;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,193 +13,188 @@
 
 /* --- Estilos generales --- */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 /* --- Barra superior con texto en movimiento --- */
 .top-bar {
-    background: #222;
-    color: #fff;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
+  background: #222;
+  color: #fff;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
 }
 
 .top-bar span {
-    white-space: nowrap;
-    position: absolute;
-    animation: scrollText 20s linear infinite;
+  white-space: nowrap;
+  position: absolute;
+  animation: scrollText 20s linear infinite;
 }
 
 @keyframes scrollText {
-    0% {
-        left: 100%;
-    }
+  0% {
+    left: 100%;
+  }
 
-    100% {
-        left: -100%;
-    }
+  100% {
+    left: -100%;
+  }
 }
 
 /* --- Header principal --- */
 header {
-    background: #E6F0FA;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 40px;
+  background: #E6F0FA;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
 }
 
 /* Logo */
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #222;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
 }
 
 /* Navegación */
 nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: #007BFF;
+  color: #007BFF;
 }
 
 /* Botón login */
 .login-btn {
-    padding: 8px 16px;
-    border: 1px solid #007BFF;
-    border-radius: 5px;
-    background: #007BFF;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease;
+  padding: 8px 16px;
+  border: 1px solid #007BFF;
+  border-radius: 5px;
+  background: #007BFF;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .login-btn:hover {
-    background: #0056b3;
+  background: #0056b3;
 }
 
 /* --- Hero Section --- */
 .hero {
-    display: flex;
-    gap: 20px;
-    padding: 40px;
-    background-image: url('ruta-de-tu-hero.jpg');
-    /* Cambiar por tu imagen */
-    background: #E6F0FA;
-    background-size: cover;
-    background-position: center;
-    min-height: 500px;
-    color: #1A3D7C;
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+  background-image: url('ruta-de-tu-hero.jpg');
+  background: #E6F0FA;
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;
+  color: #1A3D7C;
 }
 
 /* Puertas laterales */
 .hero-side {
-    flex: 1;
-    /* Temporalmente con fondo semi-transparente para visualización */
-    background: #4A90E2;
-    border-radius: 10px;
-    position: relative;
-    box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.1);
-    /* sensación de profundidad */
-
+  flex: 1;
+  background: #4A90E2;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Puerta derecha sombra invertida */
 .hero-right {
-    box-shadow: inset 5px 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 5px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Interior nevera */
 .hero-center {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background: #F0F8FF;
-    /* Fondo semitransparente para destacar texto */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #F0F8FF;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Secciones internas del div central */
 .ingrediente-receta,
 .recetas-disponibles,
 .recetas-sugeridas {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
 }
 
 .ingrediente-receta h2,
 .recetas-disponibles h2,
 .recetas-sugeridas h2 {
-    margin: 0 0 10px 0;
-    font-size: 1.5rem;
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
 }
 
 .carousel {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
 .carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
 
 .slide {
-    min-width: 200px;
-    margin-right: 15px;
-    border-radius: 8px;
-    overflow: hidden;
+  min-width: 200px;
+  margin-right: 15px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .slide img {
-    width: 100%;
-    display: block;
-    object-fit: cover;
+  width: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 /* Botones de navegación */
 .carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: #1A3D7C;
-    font-size: 2rem;
-    padding: 5px 10px;
-    cursor: pointer;
-    z-index: 10;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #1A3D7C;
+  font-size: 2rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .carousel-btn.left {
-    left: 10px;
+  left: 10px;
 }
 
 .carousel-btn.right {
-    right: 10px;
+  right: 10px;
 }
 
 /*Apartado derecha de Mi nevera */
@@ -212,7 +205,7 @@ nav a:hover {
   padding: 15px;
   color: #1A3D7C;
   font-family: Arial, sans-serif;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -305,77 +298,76 @@ nav a:hover {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
 }
 
-
 /* --- Footer --- */
 footer {
-    background: #E6F0FA;
-    border-top: 1px solid #ddd;
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  background: #E6F0FA;
+  border-top: 1px solid #ddd;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Logo */
 .footer-logo {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #222;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #222;
 }
 
 /* Contacto */
 .footer-contact a {
-    color: #007BFF;
-    text-decoration: none;
-    font-weight: 500;
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .footer-contact a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Botón del footer */
 .footer-btn {
-    padding: 8px 16px;
-    border: 1px solid #007BFF;
-    border-radius: 5px;
-    background: #007BFF;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.3s ease;
+  padding: 8px 16px;
+  border: 1px solid #007BFF;
+  border-radius: 5px;
+  background: #007BFF;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .footer-btn:hover {
-    background: #0056b3;
+  background: #0056b3;
 }
 
-/*CSS de componente mi nevera */
-/* Contenedor principal que distribuye el listado y el input en dos columnas */
+/*componente mi nevera */
 .ingredientes-container {
   display: flex;
-  gap: 40px; /* Separación entre columnas */
+  gap: 40px;
   padding: 20px;
-  background: #E6F0FA; /* Fondo suave */
+  background: #E6F0FA;
   border-radius: 10px;
   margin: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Sombra ligera */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Caja de la lista y caja del input: estilos similares */
 .ingredientes-lista,
 .ingredientes-input {
-  flex: 1; /* Ocupan el mismo ancho */
-  background: #ffffffcc; /* Blanco semitransparente */
+  flex: 1;
+  background: #ffffffcc;
   border-radius: 10px;
   padding: 15px;
   color: #1A3D7C;
   font-family: Arial, sans-serif;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Títulos de cada caja */
@@ -406,7 +398,7 @@ footer {
   margin: 6px 0;
   border-radius: 6px;
   display: flex;
-  justify-content: space-between; /* Nombre a la izquierda, botón a la derecha */
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -419,7 +411,7 @@ footer {
   cursor: pointer;
 }
 
-/* Caja con el input y el botón ➕ */
+/* Caja con el input y el botón */
 .input-box {
   display: flex;
   gap: 8px;
@@ -428,7 +420,7 @@ footer {
 
 /* Input donde se escribe el ingrediente */
 .input-box input {
-  flex: 1; /* Ocupa todo el ancho posible */
+  flex: 1;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -438,7 +430,7 @@ footer {
 .input-box button {
   padding: 8px 12px;
   border: none;
-  background: #007BFF; /* Azul */
+  background: #007BFF;
   color: white;
   border-radius: 6px;
   cursor: pointer;
