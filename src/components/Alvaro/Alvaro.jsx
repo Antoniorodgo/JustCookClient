@@ -2,7 +2,7 @@ import React from 'react'
 
 function Alvaro() {
     return (
-        <div>Alvaro</div>
+        <div>Alvaro Cuallado</div>
     )
 }
 
