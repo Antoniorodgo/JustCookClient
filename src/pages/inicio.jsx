@@ -2,6 +2,7 @@ import React from "react";
 import { Header } from "../layout/Header";
 import { Supermercados } from "../layout/Supermercados";
 import { Footer } from "../layout/footer";
+
 export const Inicio = () => {
     return (
         <>

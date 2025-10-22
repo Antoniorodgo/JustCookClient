@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export const Header = () => {
   return (
     <header >
-       {/* Barra superior */}
+      {/* Barra superior */}
       <div id="#top" className="top-bar">
         <span>Bienvenido a nuestra web | La gestion de tu nevera como jamas lo imaginaste | Regístrate y disfruta</span>
       </div>
@@ -15,15 +15,15 @@ export const Header = () => {
 
         <nav>
           <ul>
-            <li><Link to ="/">Inicio</Link></li>
+            <li><Link to="/">Inicio</Link></li>
             <li><Link to="/MisRecetas">Mis recetas</Link></li>
             <li><Link to="/Minevera">Mi nevera</Link></li>
-            <li><Link to="/contacto">Contacto</Link></li>
           </ul>
         </nav>
 
         <div>
-          <button className="login-btn">Iniciar Sesión</button>
+          <Link to="/LoginRegistro" className="login-btn">Inicio Sesión</Link>
+
         </div>
       </div>
     </header>

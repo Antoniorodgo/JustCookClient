@@ -1,0 +1,39 @@
+.receta {
+    border-radius: 20px;
+    width: 80%;
+    margin: 30px auto;
+    padding: 15px 40px;
+    border: 3px solid rgb(0, 0, 0);
+}
+
+h4 {
+    color: #1A3D7C;
+    text-align: left;
+}
+
+p {
+    text-align: left;
+}
+
+section {
+    display: flex;
+}
+
+section p {
+    margin: 0 20px 20px 0;
+}
+
+#dificultad-ingredientes p {
+    padding: 5px 20px;
+}
+
+#parrafo-dificultad {
+    background-color: #9BCBFB;
+    border-radius: 20px;
+}
+
+#seccion-descripcion {
+    flex-direction: column;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+}

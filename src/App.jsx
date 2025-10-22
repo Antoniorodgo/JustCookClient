@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { MiNevera } from './pages/MiNevera'
 import { Inicio } from './pages/inicio'
 import { MisRecetas } from './pages/MisRecetas'
+import { LoginRegistro } from './pages/LoginRegistro.jsx'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/MiNevera" element={<MiNevera />} />
           <Route path="/MisRecetas" element={<MisRecetas />} />
+          <Route path="/LoginRegistro" element={<LoginRegistro />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

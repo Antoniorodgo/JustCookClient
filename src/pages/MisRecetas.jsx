@@ -1,15 +1,14 @@
-import React from 'react'
 import { Footer } from '../layout/footer'
-import { CarruselImagenes } from '../layout/CarruselImageneses'
 import { Header } from '../layout/Header'
+import RecetaFavorita from '../components/RecetaFavorita/RecetaFavorita'
 
 export const MisRecetas = () => {
+
   return (
     <div>
-      <Header></Header>
-
-      <CarruselImagenes></CarruselImagenes>
-      <Footer></Footer>
+      <Header />
+      <RecetaFavorita />
+      <Footer />
     </div>
   )
 }
