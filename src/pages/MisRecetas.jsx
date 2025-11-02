@@ -5,7 +5,6 @@ import { Nevera } from '../components/Nevera/Nevera'
 export const MisRecetas = () => {
   return (
     <div>
-      <Nevera></Nevera>
       <CarruselImagenes></CarruselImagenes>
     </div>
   )

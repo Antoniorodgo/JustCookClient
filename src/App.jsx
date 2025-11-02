@@ -1,9 +1,9 @@
-import './App.css'
-import { Rutas } from './routing/rutas.jsx'
+import './App.css';
+import { Rutas } from "./routing/Rutas.jsx";
 
 function App() {
 
-  return Rutas();
+  return <Rutas />;
 }
 
 export default App;

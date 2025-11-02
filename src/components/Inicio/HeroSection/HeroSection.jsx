@@ -9,7 +9,7 @@ export const HeroSection = () => {
         <section className={styles.hero}>
             {/* Lado izquierdo (por ahora vacío o informativo) */}
             <div className={styles.heroSide}>
-                {/* Espacio para futuro contenido */}
+                <h3>Pendientes funcionalidad</h3>
             </div>
 
             {/* Zona central */}

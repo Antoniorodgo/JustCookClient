@@ -21,17 +21,20 @@ body {
 .top-bar {
   background: #222;
   color: #fff;
-  height: 30px;
-  display: flex;
+  height: 25px;
+  display: block;
+  width: 100%;
   align-items: center;
   overflow: hidden;
   position: relative;
+  padding: 0 10px;
 }
 
 .top-bar span {
   white-space: nowrap;
   position: absolute;
   animation: scrollText 20s linear infinite;
+  left:100%;
 }
 
 @keyframes scrollText {
@@ -48,7 +51,7 @@ body {
 header {
   background: #E6F0FA;
   border-bottom: 1px solid #ddd;
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: space-between;
   padding: 15px 40px;
@@ -62,12 +65,19 @@ header {
 }
 
 /* Navegación */
+nav {
+  display: flex;           /* activa flex en el nav */
+  justify-content: center; /* centra el ul horizontalmente */
+  align-items: center;     /* centra verticalmente si hay altura definida */
+}
+
 nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
   margin: 0;
   padding: 0;
+
 }
 
 nav a {

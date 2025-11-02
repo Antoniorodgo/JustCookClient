@@ -2,23 +2,44 @@ import { useState } from "react";
 import styles from "./Nevera.module.css";
 
 export function IngredientesInput({ onAdd }) {
-    const [nuevoIngrediente, setNuevoIngrediente] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [peso, setPeso] = useState("");
+    const [caducidad, setCaducidad] = useState("");
+
 
     const handleAddClick = () => {
-        onAdd(nuevoIngrediente);
-        setNuevoIngrediente("");
+        if(nombre.trim() === "") return; //no agrega si el nombre esta vacio
+
+        onAdd({nombre, peso, caducidad});
+        setNombre("");
+        setPeso("");
+        setCaducidad("");
     };
 
     return (
-        <div className={style.ingredientesInput}>
-            <h2>Añadir Ingrediente</h2>
-            <div className={style.inputBox}>
+        <div className={styles.ingredientesInput}>
+            <h2>Añadir producto a tu nevera</h2>
+            <div className={styles.inputBox}>
                 <input
                     type="text"
-                    value={nuevoIngrediente}
-                    onChange={(e) => setNuevoIngrediente(e.target.value)}
-                    onKeyPress={(e) => e.key === "Enter" && handleAddClick()}
-                    placeholder="Escribe un ingrediente..."
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleAddClick()}
+                    placeholder="Nombre del producto..."
+                />
+                <input
+                    type="text"
+                    value={peso}
+                    onChange={(e) => setPeso(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleAddClick()}
+                    placeholder="Peso del producto..."
+                />
+                <input
+                    type="date"
+                    value={caducidad}
+                    onChange={(e) => setCaducidad(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleAddClick()}
+                    placeholder="Caducidad del producto..."
                 />
                 <button onClick={handleAddClick}>➕</button>
             </div>

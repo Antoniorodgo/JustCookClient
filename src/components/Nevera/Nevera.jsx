@@ -1,14 +1,16 @@
 import { useState } from "react";
-import {IngredientesLista} from "./IngredientesLista";
-import {IngredientesInput} from "./IngredientesInput";
+import { IngredientesLista } from "./IngredientesLista";
+import { IngredientesInput } from "./IngredientesInput";
 import styles from "./Nevera.module.css";
 
 export function Nevera() {
     const [ingredientes, setIngredientes] = useState([]);
 
-    // Añadir ingrediente
+    // Añadir ingrediente (ahora es un objeto)
     const handleAdd = (nuevoIngrediente) => {
-        if (nuevoIngrediente.trim() === "") return;
+        // Comprobar que el nombre no esté vacío
+        if (!nuevoIngrediente.nombre || nuevoIngrediente.nombre.trim() === "") return;
+
         setIngredientes([...ingredientes, nuevoIngrediente]);
     };
 
@@ -19,9 +21,8 @@ export function Nevera() {
 
     return (
         <div className={styles.ingredientesContainer}>
-            <IngredientesLista ingredientes={ingredientes} onDelete={handleDelete} />
             <IngredientesInput onAdd={handleAdd} />
+            <IngredientesLista ingredientes={ingredientes} onDelete={handleDelete} />
         </div>
     );
 }
-

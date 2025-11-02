@@ -9,7 +9,7 @@ export function IngredientesLista({ ingredientes, onDelete }) {
                 <ul>
                     {ingredientes.map((item, index) => (
                         <li key={index}>
-                            <span>{item}</span>
+                            <span>{item.nombre} {item.peso && `- ${item.peso}`} {item.caducidad && `- ${item.caducidad}`}</span>
                             <button onClick={() => onDelete(index)}>✖</button>
                         </li>
                     ))}
