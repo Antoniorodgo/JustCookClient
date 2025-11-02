@@ -1,22 +1,24 @@
 import React from "react";
-import { Routes, Route, BrowserRouter, Navigate, Link } from "react-router-dom";
-import { Inicio } from "../pages/inicio";
+import { Routes, Route, BrowserRouter} from "react-router-dom";
+import { Inicio } from "../pages/Inicio";
 import { Ingredientes } from "../pages/Ingredientes";
 import { MiNevera } from "../pages/MiNevera";
 import { MisRecetas } from "../pages/MisRecetas";
+import { Header } from "../layout/Header";
+import { Footer } from "../layout/Footer";
 
 export const Rutas = () => {
     return (
         <BrowserRouter>
-            {/*Layout*/}
-            {/*Contenido central y rutas*/}
-            <section>
+            <Header></Header>
+            <main>
                 <Routes>
-                    <Route path="/" element={<Inicio />}></Route>
-                    <Route path="/MiNevera" element={<MiNevera />}></Route>
-                    <Route path="/MisRecetas" element={<MisRecetas />}></Route>
+                    <Route path="/" element={<Inicio />} />
+                    <Route path="/MiNevera" element={<MiNevera />} />
+                    <Route path="/MisRecetas" element={<MisRecetas />} />
                 </Routes>
-            </section>
+            </main>
+            <Footer></Footer>
         </BrowserRouter>
     )
 }
