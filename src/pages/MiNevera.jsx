@@ -9,7 +9,11 @@ export const MiNevera = () => {
       <main>
         <Nevera></Nevera>
       </main>
+<<<<<<< HEAD
       <Supermercados></Supermercados>
+=======
+      {/* <Supermercados/> */}
+>>>>>>> fix-conflicts-05-11
     </>
   );
 };

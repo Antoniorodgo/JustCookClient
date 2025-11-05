@@ -1,4 +1,4 @@
-import Ingrediente from '../Ingrediente/Ingrediente'
+import Ingrediente from './Ingrediente/Ingrediente'
 import './RecetaFavorita.css'
 
 function RecetaFavorita() {

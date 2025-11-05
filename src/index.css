@@ -1,5 +1,9 @@
 :root {
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> fix-conflicts-05-11
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -34,7 +38,11 @@ body {
   white-space: nowrap;
   position: absolute;
   animation: scrollText 20s linear infinite;
+<<<<<<< HEAD
   left:100%;
+=======
+  left: 100%;
+>>>>>>> fix-conflicts-05-11
 }
 
 @keyframes scrollText {
@@ -66,9 +74,18 @@ header {
 
 /* Navegación */
 nav {
+<<<<<<< HEAD
   display: flex;           /* activa flex en el nav */
   justify-content: center; /* centra el ul horizontalmente */
   align-items: center;     /* centra verticalmente si hay altura definida */
+=======
+  display: flex;
+  /* activa flex en el nav */
+  justify-content: center;
+  /* centra el ul horizontalmente */
+  align-items: center;
+  /* centra verticalmente si hay altura definida */
+>>>>>>> fix-conflicts-05-11
 }
 
 nav ul {
@@ -106,7 +123,10 @@ nav a:hover {
   background: #0056b3;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> fix-conflicts-05-11
 .supermercados {
   overflow: hidden;
   background: #f4f4f4;
@@ -185,5 +205,9 @@ footer {
 
 .footer-btn:hover {
   background: #0056b3;
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> fix-conflicts-05-11

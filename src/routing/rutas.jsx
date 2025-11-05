@@ -1,6 +1,9 @@
 import React from "react";
-import { Routes, Route, BrowserRouter, Navigate, Link } from "react-router-dom";
+import { Header } from "../layout/Header";
+import { Footer } from "../layout/Footer";
+import { Routes, Route } from "react-router-dom";
 import { Inicio } from "../pages/inicio";
+import { Ingredientes } from "../pages/Ingredientes";
 import { MiNevera } from "../pages/MiNevera";
 import { MisRecetas } from "../pages/MisRecetas";
 import { LoginRegistro } from "../pages/LoginRegistro";

@@ -14,7 +14,11 @@ export const Inicio = () => {
                     <Nevera />
                 </HeroSection>
             </main>
+<<<<<<< HEAD
             <Supermercados />
+=======
+            {/*  <Supermercados /> */}
+>>>>>>> fix-conflicts-05-11
         </>
     );
 };

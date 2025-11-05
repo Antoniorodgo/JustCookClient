@@ -1,15 +1,28 @@
-import { Footer } from '../layout/footer'
-import { Header } from '../layout/Header'
-import RecetaFavorita from '../components/RecetaFavorita/RecetaFavorita'
+import RecetaFavorita from '../components/MisRecetas/RecetaFavorita/RecetaFavorita'
+import axios from 'axios'
+import { useEffect } from 'react'
 
 export const MisRecetas = () => {
-
+  useEffect(() => {
+    const conseguirReceteas = async () => {
+      try {
+        const response = await axios.get('https://rickandmortyapi.com/api')
+        const data = response.data
+        console.log(data)
+      } catch (error) {
+        console.error('Error al obtener recetas:', error)
+      }
+    }
+    conseguirReceteas()
+  }, [])
   return (
     <div>
-      <Header />
       <RecetaFavorita />
+<<<<<<< HEAD
       <Footer />
       <CarruselImagenes></CarruselImagenes>
+=======
+>>>>>>> fix-conflicts-05-11
     </div>
   )
 }

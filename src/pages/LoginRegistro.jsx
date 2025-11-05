@@ -1,10 +1,10 @@
-import Registro from "../components/Registro/Registro"
-import Inicio from "../components/InicioSesion/InicioSesion"
+import Registro from "../components/LoginRegistro/Registro/Registro"
+import InicioSesion from "../components/LoginRegistro/InicioSesion/InicioSesion"
 
 export const LoginRegistro = () => {
     return (
         <>
-            <Inicio />
+            <InicioSesion />
             <Registro />
         </>
     )

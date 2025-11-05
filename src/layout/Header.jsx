@@ -6,9 +6,15 @@ export const Header = () => {
   return (
     <header >
       {/* Barra superior */}
+<<<<<<< HEAD
       <div id="top" className="top-bar">
         <span>Bienvenido a nuestra web | La gestion de tu nevera como jamas lo imaginaste | Regístrate y disfruta</span><br />
       </div>
+=======
+      {/* <div id="top" className="top-bar">
+        <span>Bienvenido a nuestra web | La gestion de tu nevera como jamas lo imaginaste | Regístrate y disfruta</span><br />
+      </div> */}
+>>>>>>> fix-conflicts-05-11
       {/* Header principal */}
       <div className="header-main">
 
@@ -18,7 +24,7 @@ export const Header = () => {
           <ul>
             <li><Link to="/">Inicio</Link></li>
             <li><Link to="/MisRecetas">Mis recetas</Link></li>
-            <li><Link to="/Minevera">Mi nevera</Link></li>
+            <li><Link to="/MiNevera">Mi nevera</Link></li>
           </ul>
         </nav>
 
