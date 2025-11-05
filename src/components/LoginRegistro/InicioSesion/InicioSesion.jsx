@@ -1,6 +1,11 @@
 import React from 'react'
+import { useState } from 'react'
 
 function InicioSesion() {
+    const [usuario, setUsuario] = useState({
+        correo: '',
+        contraseña: ''
+    })
     return (
         <>
             <h3>¿Ya tienes cuenta? Inicia sesion</h3>
