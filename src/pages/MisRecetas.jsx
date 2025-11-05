@@ -18,11 +18,6 @@ export const MisRecetas = () => {
   return (
     <div>
       <RecetaFavorita />
-<<<<<<< HEAD
-      <Footer />
-      <CarruselImagenes></CarruselImagenes>
-=======
->>>>>>> fix-conflicts-05-11
     </div>
   )
 }

@@ -6,15 +6,9 @@ export const Header = () => {
   return (
     <header >
       {/* Barra superior */}
-<<<<<<< HEAD
       <div id="top" className="top-bar">
         <span>Bienvenido a nuestra web | La gestion de tu nevera como jamas lo imaginaste | Regístrate y disfruta</span><br />
       </div>
-=======
-      {/* <div id="top" className="top-bar">
-        <span>Bienvenido a nuestra web | La gestion de tu nevera como jamas lo imaginaste | Regístrate y disfruta</span><br />
-      </div> */}
->>>>>>> fix-conflicts-05-11
       {/* Header principal */}
       <div className="header-main">
 
