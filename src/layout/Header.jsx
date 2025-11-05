@@ -1,17 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import "../index.css";
 
 export const Header = () => {
   return (
     <header >
       {/* Barra superior */}
-      <div id="#top" className="top-bar">
-        <span>Bienvenido a nuestra web | La gestion de tu nevera como jamas lo imaginaste | Regístrate y disfruta</span>
+      <div id="top" className="top-bar">
+        <span>Bienvenido a nuestra web | La gestion de tu nevera como jamas lo imaginaste | Regístrate y disfruta</span><br />
       </div>
-
       {/* Header principal */}
       <div className="header-main">
-        <div className="logo">MiLogo</div>
+
+        <div className="logo">JustCook</div>
 
         <nav>
           <ul>

@@ -7,17 +7,17 @@ import { LoginRegistro } from "../pages/LoginRegistro";
 
 export const Rutas = () => {
     return (
-        <BrowserRouter>
-            {/*Layout*/}
-            {/*Contenido central y rutas*/}
-            <section>
+        <>
+            <Header />
+            <main>
                 <Routes>
                     <Route path="/" element={<Inicio />}></Route>
                     <Route path="/MiNevera" element={<MiNevera />}></Route>
                     <Route path="/MisRecetas" element={<MisRecetas />}></Route>
                     <Route path="/LoginRegistro" element={<LoginRegistro />}></Route>
                 </Routes>
-            </section>
-        </BrowserRouter>
-    )
-}
+            </main>
+            <Footer />
+        </>
+    );
+};

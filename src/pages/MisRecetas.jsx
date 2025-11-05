@@ -9,6 +9,7 @@ export const MisRecetas = () => {
       <Header />
       <RecetaFavorita />
       <Footer />
+      <CarruselImagenes></CarruselImagenes>
     </div>
   )
 }

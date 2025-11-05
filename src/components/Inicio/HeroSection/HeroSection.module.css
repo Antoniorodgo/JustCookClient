@@ -1,0 +1,33 @@
+.hero {
+    display: flex;
+    gap: 20px;
+    padding: 40px;
+    background: #E6F0FA;
+    background-size: cover;
+    background-position: center;
+    min-height: 500px;
+    color: #1A3D7C;
+}
+
+.heroSide {
+    flex: 1;
+    background: #4A90E2;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.heroRight {
+    box-shadow: inset 5px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.heroCenter {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: #F0F8FF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
