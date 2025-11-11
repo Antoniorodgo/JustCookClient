@@ -6,7 +6,7 @@ export const MisRecetas = () => {
   useEffect(() => {
     const conseguirReceteas = async () => {
       try {
-        const response = await axios.get('https://rickandmortyapi.com/api')
+        const response = await axios.get('http://localhost:3000/api/recetas')
         const data = response.data
         console.log(data)
       } catch (error) {
