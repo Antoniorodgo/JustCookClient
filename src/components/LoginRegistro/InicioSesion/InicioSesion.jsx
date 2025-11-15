@@ -31,7 +31,7 @@ function InicioSesion() {
             })
 
             const data = await response.json()
-
+            console.log(data)
             if (response.ok) {
                 setMessage('✅ Inicio de sesión exitoso')
                 // Guardar info del usuario en localStorage
