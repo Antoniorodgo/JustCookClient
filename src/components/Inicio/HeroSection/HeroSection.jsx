@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./HeroSection.module.css";
 import { RecetasDisponibles } from "../RecetasDisponibles/RecetasDisponibles";
 import { RecetasSugeridas } from "../RecetasSugeridas/RecetasSugeridas";
-import { Nevera } from "../Nevera/Nevera";
+import { AsideNevera } from "../AsideNevera/AsideNevera";
 
 export const HeroSection = () => {
     return (
@@ -28,7 +28,7 @@ export const HeroSection = () => {
 
             {/* Lado derecho con la nevera */}
             <div className={`${styles.heroSide} ${styles.heroRight}`}>
-                <Nevera />
+                <AsideNevera />
             </div>
         </section>
     );

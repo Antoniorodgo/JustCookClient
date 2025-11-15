@@ -1,32 +1,34 @@
 import RecetaFavorita from '../components/MisRecetas/RecetaFavorita/RecetaFavorita'
 import axios from 'axios'
-import { useEffect ,useState} from 'react'
+import { useEffect, useState } from 'react'
 
 export const MisRecetas = () => {
   const [recetasFavoritas, setRecetasFavoritas] = useState([])
+  // Conseguir el ID del usuario que esta logeado actualmente
+  const objetoStringUsuario = localStorage.getItem('user')
+  const objetoUsuario = JSON.parse(objetoStringUsuario)
+  const idUsuarioLogeado = objetoUsuario.id
 
   useEffect(() => {
-    const [conseguirReceteas] = async () => {
+    const conseguirReceteasFavoritas = async () => {
       try {
-        const response = await axios.get('https://tu-api.com/usuarios/1/favoritas')
+        const response = await axios.get(`http://localhost:3000/api/usuarios/${idUsuarioLogeado}/favoritas`)
         const data = response.data
+        setRecetasFavoritas(data.favoritas)
       } catch (error) {
         console.error('Error al obtener recetas:', error)
       }
     }
-    conseguirReceteas()
+    conseguirReceteasFavoritas()
   }, [])
-  return (
-    <div>
-      <h2>Mis Recetas Favoritas</h2>
+  const variable = 'funcioooonaaa esto de los props'
 
-      {recetasFavoritas.length === 0 ? (
-        <p>No tienes recetas favoritas aún.</p>
-      ) : (
-        recetasFavoritas.map((receta) => (
-          <RecetaFavorita key={receta.id} receta={receta} />
-        ))
+
+  return (
+    <>
+      {recetasFavoritas.map((receta, indice) =>
+        <RecetaFavorita key={indice} infoReceta={receta} propDeTest={variable} />
       )}
-    </div>
+    </>
   )
 }

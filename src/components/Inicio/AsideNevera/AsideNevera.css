@@ -1,0 +1,116 @@
+/* Contenedor principal */
+.contenedor {
+  background-color: #f0f7ff;
+  min-height: 100vh;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+/* Título */
+.titulo {
+  color: #2b4c7e;
+  margin-bottom: 20px;
+}
+
+/* Sección para agregar (inputs + botones) */
+.agregarSeccion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+/* Inputs generales */
+.input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Lista de ingredientes */
+.lista {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 400px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Elemento ingrediente dentro de la lista */
+.ingrediente {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+/* Botones */
+.botonAgregar {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.botonEditar {
+  background-color: #2196F3;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 4px 8px;
+  margin-right: 5px;
+}
+
+.botonGuardar {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 4px 8px;
+  margin-right: 5px;
+}
+
+.botonCancelar {
+  background-color: gray;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.botonEliminar {
+  background-color: red;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* Input usado durante edición */
+.inputEditar {
+  padding: 6px;
+  width: 150px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Mensaje informativo */
+.mensaje {
+  color: #555;
+  font-size: 14px;
+}

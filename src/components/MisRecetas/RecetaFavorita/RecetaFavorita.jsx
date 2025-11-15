@@ -1,27 +1,27 @@
 import Ingrediente from './Ingrediente/Ingrediente'
 import './RecetaFavorita.css'
 
-function RecetaFavorita({ receta }) {
+function RecetaFavorita({ infoReceta }) {
+
     return (
         <>
             <article className="receta">
-                <h4>{receta.tituloDelPlato}</h4>
+                <h4>{infoReceta["titulo"]}</h4>
                 <section id='dificultad-ingredientes'>
-                    <p id='parrafo-dificultad'>{receta.dificultad}</p>
-                    <p>Te faltan {receta.numeroIngredientesQueFaltan}</p>
+                    <p id='parrafo-dificultad'>{infoReceta["dificultad"]}</p>
                 </section>
-                <p>{receta.descripcionBreve}</p>
+                <p>{infoReceta["descripcion"]}</p>
                 <section>
-                    <p>{receta.tiempo} min</p>
-                    <p>{receta.paraCuantos} personas</p>
+                    <p>{infoReceta["tiempo_preparacion"]} min</p>
+                    <p>{infoReceta["porciones"]} personas</p>
                 </section>
                 <section id='seccion-descripcion'>
-                    <p><strong>Descripcion</strong></p>
-                    <p>{receta.descripcionExtendida}</p>
+                    <p>Descripcion</p>
+                    <p>{infoReceta["instrucciones"]}</p>
                 </section>
                 <section>
                     <p>Ingredientes:</p>
-                    {receta.ingredientes.map((ingrediente, i) => <Ingrediente key={i} nombre={ingrediente} />)}
+                    {infoReceta.ingredientes.map((ingrediente, indice) => <Ingrediente key={indice} nombre={ingrediente} />)}
 
                 </section>
             </article>

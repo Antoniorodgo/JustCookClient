@@ -7,6 +7,7 @@ import { Ingredientes } from "../pages/Ingredientes";
 import { MiNevera } from "../pages/MiNevera";
 import { MisRecetas } from "../pages/MisRecetas";
 import { LoginRegistro } from "../pages/LoginRegistro";
+import Anadiringredientes from "../pages/Anadiringredientes";
 
 export const Rutas = () => {
     return (
@@ -14,6 +15,7 @@ export const Rutas = () => {
             <Header />
             <main>
                 <Routes>
+                    <Route path="/Anadiringredientes" element={<Anadiringredientes />}></Route>
                     <Route path="/" element={<Inicio />}></Route>
                     <Route path="/MiNevera" element={<MiNevera />}></Route>
                     <Route path="/MisRecetas" element={<MisRecetas />}></Route>
