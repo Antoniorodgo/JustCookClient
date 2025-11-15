@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 
-function Anadiringredientes() {
+export const AsideNevera = () => {
 
   // variables internas del componente
 
@@ -317,4 +317,4 @@ const styles = {
 
 // EXPORTAMOS EL COMPONENTE
 
-export default Anadiringredientes;
+export default AsideNevera;
