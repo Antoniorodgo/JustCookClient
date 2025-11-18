@@ -1,10 +1,14 @@
 /* Contenedor principal */
 .contenedor {
   background-color: #f0f7ff;
-  min-height: 100vh;
-  padding: 40px;
+  width: 100%;           /* ocupar solo el ancho disponible */
+  max-width: 100%;       /* no salirse del contenedor padre */
+  padding: 20px;
+  box-sizing: border-box;
   font-family: Arial, sans-serif;
   text-align: center;
+  overflow-x: hidden;    /* evita scroll horizontal si algo se sale */
+  margin: 0 auto;
 }
 
 /* Título */
@@ -36,9 +40,10 @@
   background-color: white;
   border-radius: 10px;
   padding: 20px;
-  width: 400px;
+  width: 100%;          /* ocupar solo lo permitido */
+  max-width: 350px;     /* tamaño máximo para desktop */
   margin: 0 auto;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   box-sizing: border-box;
 }
 

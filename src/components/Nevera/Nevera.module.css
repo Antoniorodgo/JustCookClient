@@ -1,95 +1,41 @@
 /* Nevera.module.css */
 
-/* Componente Mi Nevera */
+/* Contenedor general */
 .ingredientesContainer {
   display: flex;
   gap: 40px;
   padding: 20px;
   background: #E6F0FA;
-  border-radius: 10px;
+  border-radius: 12px;
   margin: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  align-items: flex-start;
 }
 
-/* Caja de la lista y caja del input */
+/* Card: input y lista */
 .ingredientesLista,
 .ingredientesInput {
   flex: 1;
-  background: #ffffffcc;
-  border-radius: 10px;
-  padding: 15px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
   color: #1A3D7C;
   font-family: Arial, sans-serif;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* Títulos */
 .ingredientesLista h2,
 .ingredientesInput h2 {
-  margin-top: 0;
+  margin: 0 0 15px 0;
   text-align: center;
+  font-size: 1.4rem;
+  color: #16376E;
 }
 
-/* Texto cuando no hay ingredientes */
+/* Texto vacío */
 .vacio {
   text-align: center;
   color: #666;
-  font-style: italic;
-}
-
-/* Lista sin viñetas */
-.ingredientesLista ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* Cada ingrediente */
-.ingredientesLista li {
-  background: #E6F0FA;
-  padding: 8px 12px;
-  margin: 6px 0;
-  border-radius: 6px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Botón eliminar */
-.ingredientesLista li button {
-  background: transparent;
-  border: none;
-  color: red;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-/* Caja input + botón */
-.inputBox {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-/* Input */
-.inputBox input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-/* Botón añadir */
-.inputBox button {
-  padding: 8px 12px;
-  border: none;
-  background: #007BFF;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.inputBox button:hover {
-  background: #0056b3;
+  margin-top: 15px;
 }
