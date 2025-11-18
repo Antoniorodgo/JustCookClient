@@ -1,52 +1,47 @@
-import { useState, useEffect } from "react"; // useState para manejar estado local, useEffect para efectos secundarios (cargar datos)
-import { IngredientesLista } from "./IngredientesLista"; // Componente que muestra la lista de ingredientes
-import { IngredientesInput } from "./IngredientesInput"; // Componente que permite añadir ingredientes
-import styles from "./Nevera.module.css"; // Estilos CSS del componente
-import axios from "axios"; // Librería para hacer peticiones HTTP al backend
-
-export function Nevera({ userId }) {
-    // Estado local para almacenar los ingredientes del usuario
+import { useState, useEffect } from "react";
+import { IngredientesLista } from "./IngredientesLista";
+import { IngredientesInput } from "./IngredientesInput";
+import styles from "./Nevera.module.css";
+import axios from "axios";
+export function Nevera() {
     const [ingredientes, setIngredientes] = useState([]);
-    // Estado para manejar errores al cargar o modificar ingredientes
     const [error, setError] = useState(null);
 
-    // 1️⃣ Cargar ingredientes desde el backend cuando el componente se monta o cambia el userId
+    const jsonUser = JSON.parse(localStorage.getItem('user'));
+    const userId = jsonUser.id;
+    console.log(userId);
+
     useEffect(() => {
         const fetchIngredientes = async () => {
             try {
-                // Petición GET a la API para traer los ingredientes del usuario
                 const res = await axios.get(`http://localhost:3000/api/ingredientes/${userId}`);
-                setIngredientes(res.data); // Guardamos los ingredientes en el estado
+                setIngredientes(res.data);
             } catch (err) {
-                // Si hay un error, lo guardamos en el estado para mostrarlo
                 setError("No se pudieron cargar tus alimentos.");
                 console.error(err);
             }
         };
 
-        fetchIngredientes(); // Llamamos a la función de carga
+        fetchIngredientes();
     }, [userId]); // Se vuelve a ejecutar si cambia el userId
 
-    // 2️⃣ Función para añadir un nuevo ingrediente al backend y actualizar el estado
+    // función para añadir un nuevo ingrediente al backend y actualizar el estado
     const handleAdd = async (nuevoIngrediente) => {
-        // Evita añadir ingredientes sin nombre
         if (!nuevoIngrediente.nombre.trim()) return;
 
         try {
-            // Petición POST al backend enviando el nuevo ingrediente
             const res = await axios.post(
                 `http://localhost:3000/api/ingredientes/${userId}`,
                 nuevoIngrediente
             );
 
-            // Actualizamos la lista de ingredientes con la respuesta del backend
+            // Actualizamos la lista de ingredientes con la respuesta del back
             setIngredientes([...ingredientes, res.data]);
         } catch (err) {
-            console.error(err); // Mostramos errores en consola
+            console.error(err);
         }
     };
-
-    // 3️⃣ Función para eliminar un ingrediente del backend y actualizar el estado
+    //eliminar alimento
     const handleDelete = async (index) => {
         const ingrediente = ingredientes[index]; // Obtenemos el ingrediente a eliminar
 
@@ -59,19 +54,15 @@ export function Nevera({ userId }) {
             // Actualizamos el estado eliminando el ingrediente de la lista
             setIngredientes(ingredientes.filter((_, i) => i !== index));
         } catch (err) {
-            console.error(err); // Mostramos errores en consola
+            console.error(err);
         }
     };
-
     return (
         <div className={styles.ingredientesContainer}>
-            {/* Formulario para añadir ingredientes */}
-            <IngredientesInput onAdd={handleAdd} />
 
-            {/* Lista de ingredientes con opción de eliminar */}
+            <IngredientesInput onAdd={handleAdd} />
             <IngredientesLista ingredientes={ingredientes} onDelete={handleDelete} />
 
-            {/* Mostrar error si ocurre alguno */}
             {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
     );

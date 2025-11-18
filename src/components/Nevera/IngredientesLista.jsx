@@ -7,7 +7,7 @@ export function IngredientesLista({ ingredientes, onDelete }) {
                 <p className={styles.vacio}>No hay ingredientes añadidos todavía.</p>
             ) : (
                 <ul>
-                    {ingredientes.map((item, index) => (
+                    {ingredientes.ingredientes.map((item, index) => (
                         <li key={index}>
                             <span>{item.nombre} {item.peso && `- ${item.peso}`} {item.caducidad && `- ${item.caducidad}`}</span>
                             <button onClick={() => onDelete(index)}>✖</button>

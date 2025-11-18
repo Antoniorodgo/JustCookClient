@@ -1,22 +1,22 @@
 /* Contenedor principal para login + registro */
 .login-registro-container {
     display: flex;
-    gap: 40px; /* espacio entre columnas */
+    gap: 40px; 
     justify-content: center;
     align-items: flex-start;
     padding: 40px;
-    flex-wrap: wrap; /* permite apilar en pantallas pequeñas */
+    flex-wrap: wrap; 
 }
 
 /* Cada columna (InicioSesion / Registro) */
 .form-column {
-    flex: 1 1 300px; /* ancho flexible mínimo 300px */
-    max-width: 400px; /* no se haga demasiado grande */
+    flex: 1 1 300px; 
+    max-width: 400px; 
 }
 
 /* Ajuste interno de los formularios */
 .form-column form {
-    width: 100%; /* que ocupe todo el ancho de la columna */
+    width: 100%; 
     border: 5px solid #9BCBFB;
     border-radius: 20px;
     padding: 20px;
@@ -68,7 +68,7 @@ button:hover:not(:disabled) {
     background-color: #0056b3;
 }
 
-/* Mensajes de éxito/error */
+/* Mensajes de éxito y error */
 .message {
     padding: 10px;
     margin: 10px 0;

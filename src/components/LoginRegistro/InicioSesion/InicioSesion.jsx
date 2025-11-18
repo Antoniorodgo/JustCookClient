@@ -65,7 +65,7 @@ function InicioSesion() {
                     <label>Correo Electrónico</label>
                     <input
                         type="email"
-                        name="email" // 👈 Coincide con el estado
+                        name="email" // Coincide con el estado
                         value={usuario.email}
                         onChange={handleChange}
                         required

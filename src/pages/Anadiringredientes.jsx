@@ -5,12 +5,12 @@ function Anadiringredientes() {
 
   // variables internas del componente
 
-  const [ingredientes, setIngredientes] = useState([]); // lista de ingredientes
-  const [nuevoIngrediente, setNuevoIngrediente] = useState(""); // texto del input para añadir
-  const [editandoId, setEditandoId] = useState(null); // guarda el id del ingrediente que se está editando
-  const [nombreEditado, setNombreEditado] = useState(""); // guarda el nuevo nombre al editar
-  const [cargando, setCargando] = useState(false); // muestra mensaje de carga
-  const [error, setError] = useState(""); // muestra errores si hay problema con el servidor
+  const [ingredientes, setIngredientes] = useState([]); 
+  const [nuevoIngrediente, setNuevoIngrediente] = useState(""); 
+  const [editandoId, setEditandoId] = useState(null); 
+  const [nombreEditado, setNombreEditado] = useState(""); 
+  const [cargando, setCargando] = useState(false); 
+  const [error, setError] = useState(""); 
 
 
   // FUNCIÓN PARA OBTENER TODOS LOS INGREDIENTES (GET)
