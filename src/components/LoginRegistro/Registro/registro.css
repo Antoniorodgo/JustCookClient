@@ -1,32 +1,74 @@
-h3 {
-    color: #1A3D7C
+/* Contenedor principal para login + registro */
+.login-registro-container {
+    display: flex;
+    gap: 40px; /* espacio entre columnas */
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    flex-wrap: wrap; /* permite apilar en pantallas pequeñas */
 }
 
-form {
+/* Cada columna (InicioSesion / Registro) */
+.form-column {
+    flex: 1 1 300px; /* ancho flexible mínimo 300px */
+    max-width: 400px; /* no se haga demasiado grande */
+}
+
+/* Ajuste interno de los formularios */
+.form-column form {
+    width: 100%; /* que ocupe todo el ancho de la columna */
     border: 5px solid #9BCBFB;
     border-radius: 20px;
-    width: 50%;
-    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
+/* Título de cada formulario */
+h3 {
+    color: #1A3D7C;
+    text-align: center;
+}
+
+/* Contenedor de cada input dentro del form */
 form div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
+    margin-bottom: 15px;
 }
 
-/* Llevar los estilos del input al app.css */
+/* Inputs */
 input {
     background-color: #E6F0FA;
-    border: none;
-    border-radius: 20px;
-    width: 60%;
-    height: 30px;
-    margin: 15px 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
     color: black;
 }
 
+/* Botón */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+/* Mensajes de éxito/error */
 .message {
     padding: 10px;
     margin: 10px 0;
@@ -46,45 +88,14 @@ input {
     border: 1px solid #f5c6cb;
 }
 
-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-}
+/* Responsive: columnas se apilan en pantallas pequeñas */
+@media (max-width: 800px) {
+    .login-registro-container {
+        flex-direction: column;
+        align-items: center;
+    }
 
-form div {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
-}
-
-button:hover:not(:disabled) {
-    background-color: #0056b3;
+    .form-column {
+        max-width: 100%;
+    }
 }

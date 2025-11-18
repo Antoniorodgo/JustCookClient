@@ -1,12 +1,16 @@
-import Registro from "../components/LoginRegistro/Registro/Registro"
-import InicioSesion from "../components/LoginRegistro/InicioSesion/InicioSesion"
+import Registro from "../components/LoginRegistro/Registro/Registro";
+import InicioSesion from "../components/LoginRegistro/InicioSesion/InicioSesion";
+import '../components/LoginRegistro/Registro/registro.css'; // CSS externo
 
 export const LoginRegistro = () => {
-
     return (
-        <>
-            <InicioSesion />
-            <Registro />
-        </>
+        <section className="login-registro-container">
+            <div className="form-column">
+                <InicioSesion />
+            </div>
+            <div className="form-column">
+                <Registro />
+            </div>
+        </section>
     )
 }
