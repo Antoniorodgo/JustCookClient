@@ -1,4 +1,13 @@
-/* Nevera.module.css */
+li {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+li button {
+  width: 10%;
+  background-color: tomato;
+}
 
 /* Contenedor general */
 .ingredientesContainer {
@@ -38,4 +47,37 @@
   text-align: center;
   color: #666;
   margin-top: 15px;
+}
+
+/* Quitar estilos por defecto */
+.ingredientesLista ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Cada elemento de la lista */
+.ingredientesLista li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+  gap: 10px;
+}
+
+/* Botón de eliminar */
+.ingredientesLista li button {
+  background-color: tomato;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  flex-shrink: 0;
+}
+
+.ingredientesLista li button:hover {
+  background-color: #ff6347cc;
 }

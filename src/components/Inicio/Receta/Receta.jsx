@@ -1,8 +1,6 @@
-import Ingrediente from './Ingrediente/Ingrediente'
-import './RecetaFavorita.css'
+import Ingrediente from "../../MisRecetas/RecetaFavorita/Ingrediente/Ingrediente"
 
-function RecetaFavorita({ infoReceta }) {
-
+export function Receta({ infoReceta }) {
     return (
         <>
             <article className="receta">
@@ -23,10 +21,8 @@ function RecetaFavorita({ infoReceta }) {
                     <p>Ingredientes:</p>
                     {infoReceta.ingredientes.map((ingrediente, indice) => <Ingrediente key={indice} nombre={ingrediente} />)}
                 </section>
-                <button>Eliminar de favoritos</button>
+                <button>Añadir a favoritos</button>
             </article>
         </>
     )
 }
-
-export default RecetaFavorita

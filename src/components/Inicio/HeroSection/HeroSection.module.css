@@ -1,6 +1,7 @@
 .hero {
     display: flex;
-    flex-wrap: nowrap;       /* mantener todo en una fila */
+    flex-wrap: nowrap;
+    /* mantener todo en una fila */
     gap: 20px;
     padding: 40px;
     background: #E6F0FA;
@@ -10,42 +11,48 @@
 
 /* Sidebar izquierdo */
 .heroSide {
-    flex: 1 1 0;             /* ocupa 1 parte */
+    flex: 1 1 0;
+    /* ocupa 1 parte */
     max-width: 300px;
     background: #4A90E2;
     border-radius: 10px;
     position: relative;
-    box-shadow: inset -5px 0 10px rgba(0,0,0,0.1);
+    box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
 
 /* Contenido central */
 .heroCenter {
-    flex: 2 1 0;             /* ocupa 2 partes, el doble que los laterales */
+    flex: 2 1 0;
+    /* ocupa 2 partes, el doble que los laterales */
     display: flex;
     flex-direction: column;
     gap: 20px;
     background: #F0F8FF;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
 
 /* Sidebar derecho */
 .heroRight {
-    flex: 1 1 0;             /* ocupa 1 parte */
+    flex: 1 1 0;
+    /* ocupa 1 parte */
     max-width: 300px;
     background: #4A90E2;
     border-radius: 10px;
     position: relative;
-    box-shadow: inset 5px 0 10px rgba(0,0,0,0.1);
+    box-shadow: inset 5px 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
 
 /* Responsivo: en pantallas más pequeñas */
 @media (max-width: 1024px) {
-    .heroSide, .heroCenter, .heroRight {
+
+    .heroSide,
+    .heroCenter,
+    .heroRight {
         flex: 1 1 100%;
         max-width: 100%;
     }

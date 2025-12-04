@@ -1,33 +1,55 @@
 import RecetaFavorita from '../components/MisRecetas/RecetaFavorita/RecetaFavorita'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const MisRecetas = () => {
+  const navigate = useNavigate()
   const [recetasFavoritas, setRecetasFavoritas] = useState([])
+  const [loading, setLoading] = useState(true)
+
   // Conseguir el ID del usuario que esta logeado actualmente
-  const objetoStringUsuario = localStorage.getItem('user')
-  const objetoUsuario = JSON.parse(objetoStringUsuario)
-  const idUsuarioLogeado = objetoUsuario.id
+  const objetoUsuario = JSON.parse(localStorage.getItem('user'))
+  const idUsuarioLogeado = objetoUsuario?.id
 
   useEffect(() => {
     const conseguirReceteasFavoritas = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/api/usuarios/${idUsuarioLogeado}/favoritas`)
         const data = response.data
+
         setRecetasFavoritas(data.favoritas)
       } catch (error) {
         console.error('Error al obtener recetas:', error)
+        navigate('/')
+      } finally {
+        setLoading(false)
       }
     }
+
     conseguirReceteasFavoritas()
   }, [])
+
   const variable = 'funcioooonaaa esto de los props'
 
+  // 🔵 Mostrar mensaje mientras carga
+  if (loading) {
+    return <h2 className="cargando-recetas">Cargando recetas...</h2>
+  }
+
+  // 🔴 Si no hay recetas
+  if (!loading && recetasFavoritas.length === 0) {
+    return <h3 className="sin-recetas">No tienes recetas favoritas aún.</h3>
+  }
 
   return (
     <>
       {recetasFavoritas.map((receta, indice) =>
-        <RecetaFavorita key={indice} infoReceta={receta} propDeTest={variable} />
+        <RecetaFavorita
+          key={indice}
+          infoReceta={receta}
+          propDeTest={variable}
+        />
       )}
     </>
   )

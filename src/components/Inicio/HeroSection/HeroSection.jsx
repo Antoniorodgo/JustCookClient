@@ -1,32 +1,66 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import styles from "./HeroSection.module.css";
-import { RecetasDisponibles } from "../RecetasDisponibles/RecetasDisponibles";
-import { RecetasSugeridas } from "../RecetasSugeridas/RecetasSugeridas";
 import { AsideNevera } from "../AsideNevera/AsideNevera";
+import { Receta } from "../Receta/Receta";
 
 export const HeroSection = () => {
+    const [recetas, setRecetas] = useState([]);
+    const [recetasFiltradas, setRecetasFiltradas] = useState([]);
+
+    // Ingrediente provisional para filtrar
+    const ingredienteFiltro = 'mozzarella';
+
+    const obtenerRecetas = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/api/recetas");
+            if (!response.ok) {
+                throw new Error("Error al obtener las recetas");
+            }
+            const data = await response.json();
+            const arrayRecetas = data.recetas;
+            console.log(arrayRecetas);
+            setRecetas(arrayRecetas);
+
+            // Filtrar las recetas por el ingrediente provisional
+            const recetasConMozzarella = arrayRecetas.filter(receta => {
+                // Verificar si la receta tiene ingredientes y si contiene 'mozzarella'
+                // Convierte a minúsculas para hacer la búsqueda insensible a mayúsculas/minúsculas
+                return receta.ingredientes &&
+                    receta.ingredientes.some(ingrediente =>
+                        ingrediente.toLowerCase().includes(ingredienteFiltro.toLowerCase())
+                    );
+            });
+
+            setRecetasFiltradas(recetasConMozzarella);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        obtenerRecetas();
+    }, []);
+
     return (
         <section className={styles.hero}>
-            {/* Lado izquierdo (por ahora vacío o informativo) */}
-            <div className={styles.heroSide}>
-                <h3>Pendientes funcionalidad</h3>
-            </div>
-
-            {/* Zona central */}
             <div className={styles.heroCenter}>
                 <div className="ingrediente-receta">
-                    <h2>Ingrediente receta</h2>
-                    {/* Aquí podrás mostrar el ingrediente seleccionado */}
+                    <h2>Recetas con {ingredienteFiltro}</h2>
+
+                    {/* Mostrar estado del filtrado */}
+                    <p>Total recetas: {recetas.length} | Recetas con {ingredienteFiltro}: {recetasFiltradas.length}</p>
+
+                    {recetas.length === 0 ? (
+                        <p>Cargando recetas...</p>
+                    ) : recetasFiltradas.length === 0 ? (
+                        <p>No hay recetas con {ingredienteFiltro}</p>
+                    ) : (
+                        recetasFiltradas.map((receta, indice) => (
+                            <Receta key={indice} infoReceta={receta} />
+                        ))
+                    )}
                 </div>
-
-                {/* Sección de recetas disponibles */}
-                <RecetasDisponibles />
-
-                {/* Sección de recetas sugeridas */}
-                <RecetasSugeridas />
             </div>
-
-            {/* Lado derecho con la nevera */}
             <div className={`${styles.heroSide} ${styles.heroRight}`}>
                 <AsideNevera />
             </div>

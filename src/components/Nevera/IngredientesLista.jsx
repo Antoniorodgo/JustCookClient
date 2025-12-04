@@ -1,5 +1,6 @@
 import styles from "./Nevera.module.css"
 export function IngredientesLista({ ingredientes, onDelete }) {
+    console.log(ingredientes);
     return (
         <div className={styles.ingredientesLista}>
             <h2>Mi Nevera</h2>
