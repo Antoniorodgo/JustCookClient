@@ -1,29 +1,41 @@
-
 import React, { useState, useEffect } from "react";
 
 export const AsideNevera = () => {
 
-  // variables internas del componente
+  // Obtención del userId 
+  const userId =
+    (typeof window !== "undefined" && window.__USER_ID__) ||
+    localStorage.getItem("userId") ||
+    null;
 
-  const [ingredientes, setIngredientes] = useState([]); // lista de ingredientes
-  const [nuevoIngrediente, setNuevoIngrediente] = useState(""); // texto del input para añadir
-  const [editandoId, setEditandoId] = useState(null); // guarda el id del ingrediente que se está editando
-  const [nombreEditado, setNombreEditado] = useState(""); // guarda el nuevo nombre al editar
-  const [cargando, setCargando] = useState(false); // muestra mensaje de carga
-  const [error, setError] = useState(""); // muestra errores si hay problema con el servidor
+  // Estados del componente
+  const [ingredientes, setIngredientes] = useState([]);
+  const [nuevoIngrediente, setNuevoIngrediente] = useState("");
+  const [editandoId, setEditandoId] = useState(null);
+  const [nombreEditado, setNombreEditado] = useState("");
+  const [cargando, setCargando] = useState(false);
+  const [error, setError] = useState("");
 
 
-  // FUNCIÓN PARA OBTENER TODOS LOS INGREDIENTES (GET)
-
+  // ======================
+  //      GET Ingredientes
+  // ======================
   const obtenerIngredientes = async () => {
     setCargando(true);
     setError("");
 
     try {
-      const respuesta = await fetch("/api/ingredientes/:userId");
+      // Ruta correcta según tu backend
+      const ruta = userId
+        ? `/api/ingredientes/${userId}`   // Ingredientes del usuario
+        : `/api/ingredientes`;            // Todos los ingredientes
+
+      const respuesta = await fetch(ruta);
+
       if (!respuesta.ok) throw new Error("Error al obtener ingredientes");
+
       const data = await respuesta.json();
-      setIngredientes(data); // guardamos los ingredientes en el estado
+      setIngredientes(data);
     } catch (err) {
       console.error(err);
       setError("❌ Error al cargar los ingredientes.");
@@ -32,16 +44,14 @@ export const AsideNevera = () => {
     }
   };
 
-
-  // CARGAR INGREDIENTES AUTOMÁTICAMENTE AL ABRIR LA PÁGINA
-
   useEffect(() => {
     obtenerIngredientes();
   }, []);
 
 
-  // AÑADIR UN NUEVO INGREDIENTE (POST)
-
+  // ======================
+  //      POST Ingrediente
+  // ======================
   const agregarIngrediente = async () => {
     if (!nuevoIngrediente.trim()) {
       alert("Por favor, escribe un nombre de ingrediente.");
@@ -52,18 +62,21 @@ export const AsideNevera = () => {
     setError("");
 
     try {
-      const respuesta = await fetch("/api/ingredientes", {
+      // Ruta correcta del backend
+      const ruta = userId
+        ? `/api/ingredientes/${userId}`
+        : `/api/ingredientes`;
+
+      const respuesta = await fetch(ruta, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ nombre: nuevoIngrediente }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre: nuevoIngrediente }) // SOLO nombre
       });
 
       if (!respuesta.ok) throw new Error("Error al añadir ingrediente");
 
-      setNuevoIngrediente(""); // limpiamos el input
-      obtenerIngredientes(); // recargamos la lista
+      setNuevoIngrediente("");
+      obtenerIngredientes();
     } catch (err) {
       console.error(err);
       setError("❌ Error al añadir el ingrediente.");
@@ -73,16 +86,9 @@ export const AsideNevera = () => {
   };
 
 
-  // ENTRAR EN MODO EDICIÓN
-
-  const empezarEdicion = (id, nombreActual) => {
-    setEditandoId(id);
-    setNombreEditado(nombreActual);
-  };
-
-
-  // PARA GUARDAR CAMBIOS DE EDICIÓN (PUT)
-
+  // ======================
+  //      PUT Ingrediente
+  // ======================
   const guardarEdicion = async (id) => {
     if (!nombreEditado.trim()) {
       alert("El nombre no puede estar vacío.");
@@ -93,20 +99,17 @@ export const AsideNevera = () => {
     setError("");
 
     try {
-      const respuesta = await fetch(`/api/ingredientes/:id${id}`, {
+      const respuesta = await fetch(`/api/ingredientes/${id}`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ nombre: nombreEditado }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre: nombreEditado }) // SOLO nombre
       });
 
       if (!respuesta.ok) throw new Error("Error al modificar ingrediente");
 
-      // Salimos del modo edición
       setEditandoId(null);
       setNombreEditado("");
-      obtenerIngredientes(); // recargamos la lista
+      obtenerIngredientes();
     } catch (err) {
       console.error(err);
       setError("❌ Error al modificar el ingrediente.");
@@ -116,8 +119,9 @@ export const AsideNevera = () => {
   };
 
 
-  // ELIMINAR UN INGREDIENTE (DELETE)
-
+  // ======================
+  //     DELETE Ingrediente
+  // ======================
   const eliminarIngrediente = async (id) => {
     if (!window.confirm("¿Seguro que deseas eliminar este ingrediente?")) return;
 
@@ -125,13 +129,13 @@ export const AsideNevera = () => {
     setError("");
 
     try {
-      const respuesta = await fetch(`/api/ingredientes/:id${id}`, {
-        method: "DELETE",
+      const respuesta = await fetch(`/api/ingredientes/${id}`, {
+        method: "DELETE"
       });
 
       if (!respuesta.ok) throw new Error("Error al eliminar ingrediente");
 
-      obtenerIngredientes(); // recargamos la lista
+      obtenerIngredientes();
     } catch (err) {
       console.error(err);
       setError("❌ Error al eliminar el ingrediente.");
@@ -141,13 +145,13 @@ export const AsideNevera = () => {
   };
 
 
-  // INTERFAZ DE USUARIO (HTML + estilos en JS)
- 
+  // ======================
+  //       UI
+  // ======================
   return (
     <div style={styles.contenedor}>
       <h1 style={styles.titulo}>🥦 Gestor de Ingredientes</h1>
 
-      {/* Sección para añadir un nuevo ingrediente */}
       <div style={styles.agregarSeccion}>
         <input
           type="text"
@@ -161,11 +165,9 @@ export const AsideNevera = () => {
         </button>
       </div>
 
-      {/* Mensajes de carga o error */}
       {cargando && <p style={styles.mensaje}>Cargando...</p>}
       {error && <p style={{ ...styles.mensaje, color: "red" }}>{error}</p>}
 
-      {/* Lista de ingredientes */}
       <div style={styles.lista}>
         {ingredientes.length === 0 ? (
           <p>No hay ingredientes todavía.</p>
@@ -173,7 +175,6 @@ export const AsideNevera = () => {
           ingredientes.map((ing) => (
             <div key={ing.id} style={styles.ingrediente}>
               {editandoId === ing.id ? (
-                // Si estamos editando este ingrediente, mostramos un input
                 <>
                   <input
                     type="text"
@@ -181,20 +182,28 @@ export const AsideNevera = () => {
                     onChange={(e) => setNombreEditado(e.target.value)}
                     style={styles.inputEditar}
                   />
-                  <button onClick={() => guardarEdicion(ing.id)} style={styles.botonGuardar}>
+                  <button
+                    onClick={() => guardarEdicion(ing.id)}
+                    style={styles.botonGuardar}
+                  >
                     💾 Guardar
                   </button>
-                  <button onClick={() => setEditandoId(null)} style={styles.botonCancelar}>
+                  <button
+                    onClick={() => setEditandoId(null)}
+                    style={styles.botonCancelar}
+                  >
                     ✖ Cancelar
                   </button>
                 </>
               ) : (
-                // Si no estamos editando, mostramos el nombre normal
                 <>
                   <span>{ing.nombre}</span>
                   <div>
                     <button
-                      onClick={() => empezarEdicion(ing.id, ing.nombre)}
+                      onClick={() => {
+                        setEditandoId(ing.id);
+                        setNombreEditado(ing.nombre);
+                      }}
                       style={styles.botonEditar}
                     >
                       ✏️
@@ -214,11 +223,10 @@ export const AsideNevera = () => {
       </div>
     </div>
   );
-}
+};
 
 
-// CSS simple
-
+// ======= ESTILOS =======
 const styles = {
   contenedor: {
     backgroundColor: "#f0f7ff",
@@ -313,8 +321,5 @@ const styles = {
     fontSize: "14px",
   },
 };
-
-
-// EXPORTAMOS EL COMPONENTE
 
 export default AsideNevera;
