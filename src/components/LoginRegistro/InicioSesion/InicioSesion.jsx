@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 
 function InicioSesion() {
+    const navigate = useNavigate();
     const [usuario, setUsuario] = useState({
         email: '', // 👈 Cambié a 'email' para que coincida con tu API
         contraseña: ''
@@ -49,6 +51,7 @@ function InicioSesion() {
             console.error('Error en login:', error)
         } finally {
             setLoading(false)
+            navigate('/MisRecetas')
         }
     }
 
