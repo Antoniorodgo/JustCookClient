@@ -31,9 +31,7 @@ export const Header = () => {
   return (
     <header>
       <div className="header-main">
-
-        {/* Logo clicable que refresca la página */}
-        <div className="logo" onClick={() => window.location.reload()}>
+        <div className="logo" >
           JustCook
         </div>
 
