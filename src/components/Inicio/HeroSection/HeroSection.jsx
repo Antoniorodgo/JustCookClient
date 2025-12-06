@@ -8,7 +8,7 @@ export const HeroSection = () => {
     const [recetasFiltradas, setRecetasFiltradas] = useState([]);
 
     // Ingrediente provisional para filtrar
-    const ingredienteFiltro = 'mozzarella';
+    const ingredienteFiltro = '';
 
     const obtenerRecetas = async () => {
         try {

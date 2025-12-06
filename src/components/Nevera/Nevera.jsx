@@ -3,12 +3,6 @@ import { IngredientesLista } from "./IngredientesLista";
 import { IngredientesInput } from "./IngredientesInput";
 import styles from "./Nevera.module.css";
 import axios from "axios";
-export function Nevera() {
-    import { useState, useEffect } from "react";
-    import { IngredientesLista } from "./IngredientesLista";
-    import { IngredientesInput } from "./IngredientesInput";
-    import styles from "./Nevera.module.css";
-    import axios from "axios";
 
     export function Nevera() {
 
@@ -28,8 +22,6 @@ export function Nevera() {
             const fetchIngredientes = async () => {
                 try {
                     const res = await axios.get(`http://localhost:3000/api/ingredientes/${userId}`);
-                    setIngredientes(res.data);
-                    const res = await axios.get(`http://localhost:3000/api/ingredientes/${idUsuarioLogeado}`);
                     setIngredientes(res.data);
                 } catch (err) {
                     setError("No se pudieron cargar tus alimentos.");
