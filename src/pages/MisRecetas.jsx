@@ -54,7 +54,7 @@ export const MisRecetas = () => {
     <>
       {recetasFavoritas.map((receta, indice) =>
         <RecetaFavorita
-          key={indice}
+          key={receta.id}
           infoReceta={receta}
           onEliminar={eliminarRecetaFavorita}
           propDeTest={variable}
