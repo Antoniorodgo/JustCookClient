@@ -6,22 +6,23 @@ export function Receta({ infoReceta }) {
             <article className="receta">
                 <h4>{infoReceta["titulo"]}</h4>
                 <section id='dificultad-ingredientes'>
-                    <p id='parrafo-dificultad'>{infoReceta["dificultad"]}</p>
+                    <p id='parrafo-dificultad'><strong>Dificultad: </strong>{infoReceta["dificultad"]}</p>
                 </section>
-                <p>{infoReceta["descripcion"]}</p>
+                <p><strong>Descripcion: </strong> {infoReceta["descripcion"]}</p>
                 <section>
-                    <p>{infoReceta["tiempo_preparacion"]} min</p>
-                    <p>{infoReceta["porciones"]} personas</p>
+                    <p><strong>Tiempo de preparacion:</strong> {infoReceta["tiempo_preparacion"]} min</p>
+                    <br />
+                    <p><strong>Numero de personas: </strong>{infoReceta["porciones"]}</p>
                 </section>
                 <section id='seccion-descripcion'>
-                    <p>Descripcion</p>
+                    <p><strong>Instrucciones: </strong></p>
                     <p>{infoReceta["instrucciones"]}</p>
                 </section>
                 <section>
-                    <p>Ingredientes:</p>
+                    <p><strong>Ingredientes: </strong></p>
                     {infoReceta.ingredientes.map((ingrediente, indice) => <Ingrediente key={indice} nombre={ingrediente} />)}
+
                 </section>
-                <button>Añadir a favoritos</button>
             </article>
         </>
     )

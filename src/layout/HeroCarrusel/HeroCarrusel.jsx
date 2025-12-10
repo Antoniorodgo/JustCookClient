@@ -18,16 +18,17 @@ export const HeroCarrusel = () => {
             type: "image",
             src: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&h=600&w=1600",
             title: "Organiza tu nevera",
-            subtitle: "Nunca pierdas un ingrediente"
+            subtitle: "No desperdicies los ingredientes de tu nevera"
         },
         {
-            id: 3,
-            type: "video",
-            src: "https://player.vimeo.com/external/449003515.sd.mp4?s=c6f0f8658b8d9d5f4a3d57e69e0c6b4b1f48f7f5&profile_id=165",
-            title: "Come saludable",
-            subtitle: "Recetas balanceadas y fáciles"
-        },
+        id: 3,
+        type: "image",
+        src: "https://images.unsplash.com/photo-1601050692646-4ed5b21a1f3e?auto=format&fit=crop&w=1600&q=80",
+        title: "Come variado y saludable",
+        subtitle: "Recetas balanceadas y fáciles"
+    }
     ];
+
 
     // Auto-slide cada 5s
     useEffect(() => {

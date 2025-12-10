@@ -39,15 +39,24 @@ export const MisRecetas = () => {
 
   // 🔴 Si no hay recetas
   if (!loading && recetasFavoritas.length === 0) {
-    return <h3 className="sin-recetas">No tienes recetas favoritas aún.</h3>
+    return <h3 className="sin-recetas">No tienes recetas favoritas todavia.</h3>
   }
-
+  const eliminarRecetaFavorita = async (idReceta) => {
+    try {
+      await axios.delete(`http://localhost:3000/api/usuarios/${idUsuarioLogeado}/favoritas/${idReceta}`);
+      setRecetasFavoritas(prev => prev.filter(receta => receta.id !== idReceta)
+      );
+    } catch (error) {
+      console.error("La receta no se ha podido eliminar de sus favoritos", error);
+    }
+  };
   return (
     <>
       {recetasFavoritas.map((receta, indice) =>
         <RecetaFavorita
-          key={indice}
+          key={receta.id}
           infoReceta={receta}
+          onEliminar={eliminarRecetaFavorita}
           propDeTest={variable}
         />
       )}
