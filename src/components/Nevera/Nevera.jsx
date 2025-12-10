@@ -4,73 +4,184 @@ import { IngredientesInput } from "./IngredientesInput";
 import styles from "./Nevera.module.css";
 import axios from "axios";
 
-    export function Nevera() {
+export function Nevera() {
+    const [ingredientes, setIngredientes] = useState([]);
+    const [error, setError] = useState(null);
+    const [loadingDelete, setLoadingDelete] = useState(false);
 
-        const [ingredientes, setIngredientes] = useState([]);
-        const [error, setError] = useState(null);
+    // Conseguir el id del usuario logeado
+    const objetoStringUsuario = localStorage.getItem('user');
+    const objetoUsuario = JSON.parse(objetoStringUsuario);
+    const userId = objetoUsuario.id;
 
-        // Conseguir el id del usuario logeado
-        const objetoStringUsuario = localStorage.getItem('user')
-        const objetoUsuario = JSON.parse(objetoStringUsuario)
-        const idUsuarioLogeado = objetoUsuario.id
+    // Función auxiliar para normalizar datos
+    const normalizarIngredientes = (data) => {
+        if (data && data.ingredientes && Array.isArray(data.ingredientes)) {
+            return data.ingredientes;
+        } else if (Array.isArray(data)) {
+            return data;
+        } else if (data && data.ingrediente_usuario) {
+            return [data.ingrediente_usuario];
+        }
+        return [];
+    };
 
-        const jsonUser = JSON.parse(localStorage.getItem('user'));
-        const userId = jsonUser.id;
-        console.log(userId);
+    useEffect(() => {
+        const fetchIngredientes = async () => {
+            try {
+                const res = await axios.get(`http://localhost:3000/api/ingredientes/${userId}`);
+                console.log("Datos cargados del GET:", res.data);
 
-        useEffect(() => {
-            const fetchIngredientes = async () => {
-                try {
-                    const res = await axios.get(`http://localhost:3000/api/ingredientes/${userId}`);
+                // Normalizar datos
+                const ingredientesArray = normalizarIngredientes(res.data);
+                console.log("Array normalizado:", ingredientesArray);
+
+                // Guardar en estado manteniendo la estructura original si es necesario
+                if (res.data && res.data.ingredientes && Array.isArray(res.data.ingredientes)) {
+                    // Guardar como está para consistencia
                     setIngredientes(res.data);
-                } catch (err) {
-                    setError("No se pudieron cargar tus alimentos.");
-                    console.error(err);
+                } else {
+                    // Guardar como array
+                    setIngredientes(ingredientesArray);
                 }
+
+            } catch (err) {
+                setError("No se pudieron cargar tus alimentos.");
+                console.error(err);
+                setIngredientes([]);
+            }
+        };
+
+        fetchIngredientes();
+    }, [userId]);
+
+    // función para añadir un nuevo ingrediente al backend y actualizar el estado
+    const handleAdd = async (nuevoIngrediente) => {
+        if (!nuevoIngrediente.nombre.trim() || !nuevoIngrediente.cantidad) {
+            setError("Por favor, ingresa nombre y cantidad");
+            return;
+        }
+
+        try {
+            const ingredienteData = {
+                nombre: nuevoIngrediente.nombre,
+                cantidad: nuevoIngrediente.cantidad,
+                fecha_caducidad: nuevoIngrediente.caducidad || null
             };
 
-            fetchIngredientes();
-        }, [userId]); // Se vuelve a ejecutar si cambia el userId
+            console.log("Enviando datos al POST:", ingredienteData);
 
-        // función para añadir un nuevo ingrediente al backend y actualizar el estado
-        const handleAdd = async (nuevoIngrediente) => {
-            if (!nuevoIngrediente.nombre.trim()) return;
-            try {
-                const res = await axios.post(
-                    `http://localhost:3000/api/ingredientes/${idUsuarioLogeado}`,
-                    nuevoIngrediente
-                );
+            const res = await axios.post(
+                `http://localhost:3000/api/ingredientes/${userId}`,
+                ingredienteData
+            );
 
-                // Actualizamos la lista de ingredientes con la respuesta del back
-                setIngredientes([...ingredientes, res.data]);
-                // ✨ SOLUCIÓN: Usar la función de actualización del estado
-                setIngredientes(prevIngredientes => [...prevIngredientes, res.data]);
-            } catch (err) {
-                console.error(err);
-                console.error(err);
+            console.log("Respuesta del POST:", res.data);
+
+            // ACTUALIZACIÓN DEL ESTADO - CORREGIDO
+            if (res.data && res.data.ingrediente_usuario) {
+                // Crear un objeto completo con el nombre que enviamos
+                const ingredienteCompleto = {
+                    ...res.data.ingrediente_usuario,
+                    nombre: nuevoIngrediente.nombre  // ← AÑADIMOS EL NOMBRE AQUÍ
+                };
+
+                console.log("Ingrediente completo para añadir:", ingredienteCompleto);
+
+                setIngredientes(prev => {
+                    // Normalizar el estado anterior
+                    const prevArray = normalizarIngredientes(prev);
+
+                    // Añadir el nuevo ingrediente CON NOMBRE
+                    const nuevoArray = [...prevArray, ingredienteCompleto];
+
+                    // Si el estado anterior tenía estructura {ingredientes: [...]}
+                    // mantener esa estructura
+                    if (prev && prev.ingredientes && Array.isArray(prev.ingredientes)) {
+                        return {
+                            ...prev,
+                            ingredientes: nuevoArray,
+                            count: nuevoArray.length
+                        };
+                    }
+
+                    // Si no, devolver array simple
+                    return nuevoArray;
+                });
+
+                // Limpiar errores si todo fue bien
+                setError(null);
+                console.log("Ingrediente añadido exitosamente");
+            } else {
+                throw new Error("Respuesta inesperada del servidor");
             }
-        };
-        // 3️⃣ Función para eliminar un ingrediente del backend y actualizar el estado
-        const handleDelete = async (index) => {
-            const ingrediente = ingredientes[index];
-            try {
-                // Petición DELETE al backend para eliminar el ingrediente por su ID
-                await axios.delete(
-                    `http://localhost:3000/api/ingredientes/${userId}/${idUsuarioLogeado}`
-                );
-                setIngredientes(ingredientes.filter((_, i) => i !== index));
-            } catch (err) {
-                console.error(err);
-                console.error(err);
+
+        } catch (err) {
+            console.error("Error añadiendo ingrediente:", err);
+            if (err.response?.data?.error) {
+                setError(err.response.data.error);
+            } else {
+                setError("Error al añadir el ingrediente");
             }
-        };
-        return (
-            <div className={styles.ingredientesContainer}>
+        }
+    };
 
-                <IngredientesInput onAdd={handleAdd} />
-                <IngredientesLista ingredientes={ingredientes} onDelete={handleDelete} />
+    // Función para eliminar un ingrediente - SIN CAMBIOS
+    const handleDelete = async (index) => {
+        console.log("Eliminar ingrediente en índice:", index);
 
-                {error && <p style={{ color: "red" }}>{error}</p>}
-            </div>
-        );
-    }
+        // Obtener el ingrediente a eliminar
+        const ingredientesArray = normalizarIngredientes(ingredientes);
+        const ingredienteAEliminar = ingredientesArray[index];
+
+        if (!ingredienteAEliminar) {
+            setError("Ingrediente no encontrado");
+            return;
+        }
+        const ingredienteId = ingredienteAEliminar.ingrediente_id || ingredienteAEliminar.id;
+        if (!ingredienteId) {
+            setError("No se pudo identificar el ingrediente a eliminar");
+            return;
+        }
+        console.log("Eliminando - userId:", userId, "ingredienteId:", ingredienteId);
+        setLoadingDelete(true);
+        try {
+            const res = await axios.delete(
+                `http://localhost:3000/api/ingredientes/${userId}/${ingredienteId}`
+            );
+            console.log("Respuesta del DELETE:", res.data);
+            // Actualizar estado local eliminando el ingrediente
+            setIngredientes(prev => {
+                const prevArray = normalizarIngredientes(prev);
+                const nuevoArray = prevArray.filter((_, i) => i !== index);
+
+                if (prev && prev.ingredientes && Array.isArray(prev.ingredientes)) {
+                    return {
+                        ...prev,
+                        ingredientes: nuevoArray,
+                        count: nuevoArray.length
+                    };
+                }
+                return nuevoArray;
+            });
+            setError(null); // Limpiar errores si tuvo éxito
+            console.log("Ingrediente eliminado exitosamente");
+        } catch (err) {
+            console.error("Error eliminando ingrediente:", err);
+        } finally {
+            setLoadingDelete(false);
+        }
+    };
+
+    return (
+        <div className={styles.ingredientesContainer}>
+            <IngredientesInput onAdd={handleAdd} />
+            <IngredientesLista
+                ingredientes={ingredientes}
+                onDelete={handleDelete}
+                loadingDelete={loadingDelete}
+            />
+            {error && <p style={{ color: "red" }}>{error}</p>}
+        </div>
+    );
+}

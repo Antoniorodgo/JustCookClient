@@ -3,16 +3,23 @@ import styles from "./Nevera.module.css";
 
 export function IngredientesInput({ onAdd }) {
     const [nombre, setNombre] = useState("");
-    const [peso, setPeso] = useState("");
+    const [cantidad, setCantidad] = useState(""); // Cambiado de "peso" a "cantidad"
     const [caducidad, setCaducidad] = useState("");
 
-
     const handleAddClick = () => {
-        if(nombre.trim() === "") return; //no agrega si el nombre esta vacio
+        if (nombre.trim() === "" || cantidad.trim() === "") {
+            alert("Por favor, ingresa nombre y cantidad");
+            return;
+        }
 
-        onAdd({nombre, peso, caducidad});
+        onAdd({
+            nombre,
+            cantidad, // Enviado como "cantidad" para coincidir con el backend
+            caducidad
+        });
+
         setNombre("");
-        setPeso("");
+        setCantidad("");
         setCaducidad("");
     };
 
@@ -29,17 +36,16 @@ export function IngredientesInput({ onAdd }) {
                 />
                 <input
                     type="text"
-                    value={peso}
-                    onChange={(e) => setPeso(e.target.value)}
+                    value={cantidad}
+                    onChange={(e) => setCantidad(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleAddClick()}
-                    placeholder="Peso del producto..."
+                    placeholder="Cantidad (ej: 200g, 1 unidad)..."
                 />
                 <input
                     type="date"
                     value={caducidad}
                     onChange={(e) => setCaducidad(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleAddClick()}
-                    placeholder="Caducidad del producto..."
                 />
                 <button onClick={handleAddClick}>➕</button>
             </div>
