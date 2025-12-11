@@ -6,11 +6,7 @@ import { Receta } from "../Receta/Receta";
 export const HeroSection = () => {
     const [recetas, setRecetas] = useState([]);
     const [recetasFiltradas, setRecetasFiltradas] = useState([]);
-
-
-    // Ingrediente provisional para filtrar
-    const ingredienteFiltro = '';
-    const [ingredientesNevera, setIngredientesNevera] = useState([]); // ← NUEVO: estado compartido
+    const [ingredientesNevera, setIngredientesNevera] = useState([]);
 
     const obtenerRecetas = async () => {
         try {
@@ -21,7 +17,6 @@ export const HeroSection = () => {
             console.log(arrayRecetas);
             setRecetas(arrayRecetas);
 
-            // Filtrar usando los ingredientes reales de la nevera
             filtrarRecetasPorNevera(arrayRecetas, ingredientesNevera);
         } catch (error) {
             console.error(error);
@@ -38,8 +33,9 @@ export const HeroSection = () => {
         const recetasQuePuedoHacer = todasLasRecetas.filter(receta => {
             if (!receta.ingredientes || !Array.isArray(receta.ingredientes)) return false;
 
-            return receta.ingredientes.every(ingredienteReceta => {
-                const nombreIng = ingredienteReceta.toLowerCase();
+           
+            return receta.ingredientes.some(ingredienteReceta => {
+                const nombreIng = ingredienteReceta.toLowerCase().trim();
                 return ingredientesActuales.some(ingNevera =>
                     ingNevera.nombre.toLowerCase().includes(nombreIng) ||
                     nombreIng.includes(ingNevera.nombre.toLowerCase())
@@ -54,9 +50,10 @@ export const HeroSection = () => {
         obtenerRecetas();
     }, []);
 
-    // Cada vez que cambien los ingredientes de la nevera → volver a filtrar
     useEffect(() => {
-        filtrarRecetasPorNevera(recetas, ingredientesNevera);
+        if (recetas.length > 0) {
+            filtrarRecetasPorNevera(recetas, ingredientesNevera);
+        }
     }, [ingredientesNevera, recetas]);
 
     return (
@@ -83,7 +80,6 @@ export const HeroSection = () => {
             </div>
 
             <div className={`${styles.heroSide} ${styles.heroRight}`}>
-                {/* Pasamos el estado y el setter al AsideNevera */}
                 <AsideNevera 
                     ingredientes={ingredientesNevera}
                     setIngredientes={setIngredientesNevera}
