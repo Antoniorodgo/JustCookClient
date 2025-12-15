@@ -9,7 +9,7 @@
     box-sizing: border-box;
 }
 
-/* Sidebar izquierdo */
+/*  */
 .heroSide {
     flex: 1 1 0;
     /* ocupa 1 parte */
@@ -32,18 +32,6 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-}
-
-/* Sidebar derecho */
-.heroRight {
-    flex: 1 1 0;
-    /* ocupa 1 parte */
-    max-width: 300px;
-    background: #4A90E2;
-    border-radius: 10px;
-    position: relative;
-    box-shadow: inset 5px 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
 

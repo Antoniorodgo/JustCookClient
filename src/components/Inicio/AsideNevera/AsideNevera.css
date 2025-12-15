@@ -9,6 +9,7 @@
   text-align: center;
   overflow-x: hidden;    /* evita scroll horizontal si algo se sale */
   margin: 0 auto;
+  height: 100%;
 }
 
 /* Título */
@@ -57,53 +58,60 @@
   padding-bottom: 5px;
 }
 
-/* Botones */
+/* Contenedor de botones */
+.botones {
+  display: flex;
+  gap: 8px;        /* ← separa los botones del texto */
+  margin-left: 12px; /* ← separa el texto del grupo de botones */
+}
+
+/* Botón principal (Agregar) */
 .botonAgregar {
-  padding: 10px 15px;
+  padding: 8px 12px;        /* un poco más pequeño */
   background-color: #4CAF50;
   color: #ffffff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  font-size: 14px;          /* más compacto */
 }
 
+/* Botones pequeños (Editar, Guardar, Cancelar, Eliminar) */
+.botonEditar,
+.botonGuardar,
+.botonCancelar,
+.botonEliminar {
+  padding: 2px 6px;         /* más pequeños */
+  font-size: 12px;          /* letra más pequeña */
+  border-radius: 4px;       /* bordes más compactos */
+  cursor: pointer;
+  height: 24px;             /* altura más baja */
+  border: none;
+  display: flex;
+  align-items: center;      /* centra el texto verticalmente */
+}
+
+/* Colores individuales */
 .botonEditar {
   background-color: #2196F3;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 4px 8px;
-  margin-right: 5px;
+  color: white;
 }
 
 .botonGuardar {
   background-color: #4CAF50;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 4px 8px;
-  margin-right: 5px;
+  color: white;
 }
 
 .botonCancelar {
   background-color: gray;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 4px 8px;
+  color: white;
 }
 
 .botonEliminar {
   background-color: red;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 4px 8px;
+  color: white;
 }
+
 
 /* Input usado durante edición */
 .inputEditar {
@@ -118,4 +126,44 @@
 .mensaje {
   color: #555;
   font-size: 14px;
+}
+
+.modalFondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContenido {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
+.modalContenido .botones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modalContenido button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.botonAceptar {
+  background-color: #2196F3;
+  color: white;
 }

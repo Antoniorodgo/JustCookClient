@@ -3,7 +3,7 @@ import React from 'react'
 export const Footer = () => {
   return (
     <footer>
-      <div className="footer-logo">MiLogo</div>
+      <div className="footer-logo">JustCook</div>
 
       <div className="footer-contact">
         📧 <a href="mailto:correo@ejemplo.com">proyectoIFP@gmail.com</a>
