@@ -3,7 +3,7 @@
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(0, 2, 3, 0.87);
-  background-color: #f4f7fb; /* color más suave de fondo */
+  background-color: #f4f7fb;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -38,17 +38,22 @@ body {
 }
 
 @keyframes scrollText {
-  0% { left: 100%; }
-  100% { left: -100%; }
+  0% {
+    left: 100%;
+  }
+
+  100% {
+    left: -100%;
+  }
 }
 
-/* --- Header principal --- */
+
 header {
   background: #E6F0FA;
   border-bottom: 1px solid #ddd;
   padding: 15px 40px;
   box-sizing: border-box;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .header-main {
@@ -59,7 +64,6 @@ header {
   gap: 20px;
 }
 
-/* Logo */
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
@@ -67,7 +71,6 @@ header {
   letter-spacing: 1px;
 }
 
-/* Navegación */
 nav ul {
   list-style: none;
   display: flex;
@@ -82,7 +85,6 @@ nav ul li {
   padding-bottom: 10px;
 }
 
-/* Hueco moderno debajo de cada li */
 nav ul li::after {
   content: "";
   display: block;
@@ -95,14 +97,14 @@ nav ul li::after {
   transition: all 0.3s ease;
 }
 
-/* Página activa */
+
 nav ul li.active::after {
   width: 50px;
   opacity: 1;
   background: linear-gradient(90deg, #007BFF, #00CFFF);
 }
 
-/* Links */
+
 nav a {
   text-decoration: none;
   color: #333;
@@ -117,7 +119,6 @@ nav a:hover {
   background-color: #007BFF10;
 }
 
-/* Botón login / cerrar sesión */
 .login-container {
   display: flex;
   align-items: center;
@@ -139,7 +140,7 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-/* --- Sección de supermercados / logos en scroll --- */
+
 .supermercados {
   overflow: hidden;
   background: #f4f4f4;
@@ -166,8 +167,13 @@ nav a:hover {
 }
 
 @keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* --- Footer --- */
@@ -178,7 +184,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .footer-logo {

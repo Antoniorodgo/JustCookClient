@@ -3,7 +3,7 @@ import styles from "./Nevera.module.css";
 
 export function IngredientesInput({ onAdd }) {
     const [nombre, setNombre] = useState("");
-    const [cantidad, setCantidad] = useState(""); // Cambiado de "peso" a "cantidad"
+    const [cantidad, setCantidad] = useState("");
     const [caducidad, setCaducidad] = useState("");
 
     const handleAddClick = () => {
@@ -14,7 +14,7 @@ export function IngredientesInput({ onAdd }) {
 
         onAdd({
             nombre,
-            cantidad, // Enviado como "cantidad" para coincidir con el backend
+            cantidad,
             caducidad
         });
 

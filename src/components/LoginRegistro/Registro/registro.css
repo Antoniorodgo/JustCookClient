@@ -1,35 +1,31 @@
 /* Contenedor principal para login + registro */
 .login-registro-container {
     display: flex;
-    gap: 40px; 
+    gap: 40px;
     justify-content: center;
     align-items: flex-start;
     padding: 40px;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
-/* Cada columna (InicioSesion / Registro) */
 .form-column {
-    flex: 1 1 300px; 
-    max-width: 400px; 
+    flex: 1 1 300px;
+    max-width: 400px;
 }
 
-/* Ajuste interno de los formularios */
 .form-column form {
-    width: 100%; 
+    width: 100%;
     border: 5px solid #9BCBFB;
     border-radius: 20px;
     padding: 20px;
     box-sizing: border-box;
 }
 
-/* Título de cada formulario */
 h3 {
     color: #1A3D7C;
     text-align: center;
 }
 
-/* Contenedor de cada input dentro del form */
 form div {
     display: flex;
     flex-direction: column;
@@ -37,7 +33,6 @@ form div {
     margin-bottom: 15px;
 }
 
-/* Inputs */
 input {
     background-color: #E6F0FA;
     border: 1px solid #ddd;
@@ -48,7 +43,6 @@ input {
     color: black;
 }
 
-/* Botón */
 button {
     width: 100%;
     padding: 10px;
@@ -86,16 +80,4 @@ button:hover:not(:disabled) {
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
-}
-
-/* Responsive: columnas se apilan en pantallas pequeñas */
-@media (max-width: 800px) {
-    .login-registro-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .form-column {
-        max-width: 100%;
-    }
 }

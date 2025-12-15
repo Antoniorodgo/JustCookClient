@@ -15,8 +15,8 @@ function RecetaFavorita({ infoReceta, onEliminar }) {
 
         setTimeout(() => {
             onEliminar(infoReceta.id);
-            setShowModal(false); // Llama al padre
-        }, 400); // Espera a que termine la animación
+            setShowModal(false);
+        }, 400);
     };
     return (
         <>
@@ -40,7 +40,7 @@ function RecetaFavorita({ infoReceta, onEliminar }) {
                     {infoReceta.ingredientes.map((ingrediente, indice) => <Ingrediente key={indice} nombre={ingrediente} />)}
                 </section>
                 <section>
-                    <button className='btnEliminar' onClick={handleDelete}> ❌ Eliminar de Favoritos</button>
+                    <button className='btnEliminar' onClick={handleDelete}>Eliminar de Favoritos</button>
                 </section>
             </article>
             {showModal && (

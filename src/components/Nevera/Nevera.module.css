@@ -1,11 +1,9 @@
-/* Quitar estilos por defecto */
 .ingredientesLista ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Cada elemento de la lista */
 .ingredientesLista li {
   display: flex;
   justify-content: space-between;
@@ -26,10 +24,10 @@
 
 .ingredientesLista li:hover {
   background-color: #f0f8ff;
-  /* Resaltar al pasar el ratón */
+
 }
 
-/* Contenido del ingrediente (Nombre, Cantidad, Caducidad) */
+/* Contenido del ingrediente */
 .ingredientesLista li span {
   flex-grow: 1;
   display: flex;
@@ -42,7 +40,6 @@
 /* Botón de eliminar */
 .ingredientesLista li button {
   background-color: #ff6347;
-  /* Color tomate */
   color: white;
   border: none;
   border-radius: 50%;
@@ -82,7 +79,7 @@
   background-color: #f0f0f0;
 }
 
-/* Contenedor general */
+
 .ingredientesContainer {
   display: flex;
   gap: 40px;
@@ -94,7 +91,7 @@
   align-items: flex-start;
 }
 
-/* Card: input y lista */
+
 .ingredientesLista,
 .ingredientesInput {
   flex: 1;

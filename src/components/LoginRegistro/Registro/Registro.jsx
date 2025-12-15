@@ -34,7 +34,7 @@ function Registro() {
             const data = await response.json();
 
             if (response.ok) {
-                setMessage('✅ Usuario registrado exitosamente');
+                setMessage('Usuario registrado exitosamente');
                 // Limpiar formulario
                 setFormData({
                     nombre: '',
@@ -42,10 +42,10 @@ function Registro() {
                     contraseña: ''
                 });
             } else {
-                setMessage(`❌ Error: ${data.error}`);
+                setMessage(`Error: ${data.error}`);
             }
         } catch (error) {
-            setMessage('❌ Error de conexión');
+            setMessage('Error de conexión');
             console.error('Error:', error);
         } finally {
             setLoading(false);
@@ -56,7 +56,7 @@ function Registro() {
         <>
             <h3>¿Aún no cuenta? Regístrate</h3>
             {message && (
-                <div className={`message ${message.includes('✅') ? 'success' : 'error'}`}>
+                <div className={`message ${message.includes('exitosamente') ? 'success' : 'error'}`}>
                     {message}
                 </div>
             )}

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function InicioSesion() {
     const navigate = useNavigate();
     const [usuario, setUsuario] = useState({
-        email: '', // 👈 Cambié a 'email' para que coincida con tu API
+        email: '',
         contraseña: ''
     })
     const [loading, setLoading] = useState(false)
@@ -29,25 +29,20 @@ function InicioSesion() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(usuario),
-                credentials: 'include' // 👈 Importante para cookies
+                credentials: 'include'
             })
 
             const data = await response.json()
             console.log(data)
             if (response.ok) {
-                setMessage('✅ Inicio de sesión exitoso')
-                // Guardar info del usuario en localStorage
-                localStorage.setItem('user', JSON.stringify(data.user))
-                // Opcional: recargar o redirigir después de login exitoso
-                setTimeout(() => {
-                    window.location.reload() // o redirigir a otra página
-                }, 1000)
+                setMessage('Inicio de sesión exitoso')
 
+                localStorage.setItem('user', JSON.stringify(data.user))
             } else {
-                setMessage(`❌ ${data.error}`)
+                setMessage(`${data.error}`)
             }
         } catch (error) {
-            setMessage('❌ Error de conexión con el servidor')
+            setMessage('Error de conexión con el servidor')
             console.error('Error en login:', error)
         } finally {
             setLoading(false)
@@ -59,7 +54,7 @@ function InicioSesion() {
         <>
             <h3>¿Ya tienes cuenta? Inicia sesión</h3>
             {message && (
-                <div className={`message ${message.includes('✅') ? 'success' : 'error'}`}>
+                <div className={`message ${message.includes('exitoso') ? 'success' : 'error'}`}>
                     {message}
                 </div>
             )}
@@ -68,7 +63,7 @@ function InicioSesion() {
                     <label>Correo Electrónico</label>
                     <input
                         type="email"
-                        name="email" // Coincide con el estado
+                        name="email"
                         value={usuario.email}
                         onChange={handleChange}
                         required

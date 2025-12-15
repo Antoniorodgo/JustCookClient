@@ -10,7 +10,7 @@ export const Header = () => {
   useEffect(() => {
     const userLS = localStorage.getItem('user');
     if (userLS) {
-      setUsuario(JSON.parse(userLS)); // objeto con {id, nombre,...}
+      setUsuario(JSON.parse(userLS));
     }
   }, []);
 

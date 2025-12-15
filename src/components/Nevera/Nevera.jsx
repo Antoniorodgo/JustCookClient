@@ -14,7 +14,6 @@ export function Nevera() {
     const objetoUsuario = JSON.parse(objetoStringUsuario);
     const userId = objetoUsuario.id;
 
-    // Función auxiliar para normalizar datos
     const normalizarIngredientes = (data) => {
         if (data && data.ingredientes && Array.isArray(data.ingredientes)) {
             return data.ingredientes;
@@ -55,7 +54,6 @@ export function Nevera() {
         fetchIngredientes();
     }, [userId]);
 
-    // función para añadir un nuevo ingrediente al backend y actualizar el estado
     const handleAdd = async (nuevoIngrediente) => {
         if (!nuevoIngrediente.nombre.trim() || !nuevoIngrediente.cantidad) {
             setError("Por favor, ingresa nombre y cantidad");
@@ -164,7 +162,7 @@ export function Nevera() {
                 }
                 return nuevoArray;
             });
-            setError(null); // Limpiar errores si tuvo éxito
+            setError(null);
             console.log("Ingrediente eliminado exitosamente");
         } catch (err) {
             console.error("Error eliminando ingrediente:", err);

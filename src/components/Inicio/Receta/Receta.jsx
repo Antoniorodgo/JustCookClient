@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Ingrediente from "../../MisRecetas/RecetaFavorita/Ingrediente/Ingrediente"
 
+
 export function Receta({ infoReceta }) {
     const objetoStringUsuario = localStorage.getItem('user');
     const objetoUsuario = JSON.parse(objetoStringUsuario);
@@ -41,8 +42,6 @@ export function Receta({ infoReceta }) {
                 if (response.status === 409) {
                     setMensaje('Esta receta ya está en tus favoritos');
                     setEsFavorita(true);
-                } else if (response.status === 404) {
-                    setMensaje('Receta no encontrada');
                 } else {
                     setMensaje(data.error || 'Error al añadir a favoritos');
                 }
@@ -77,19 +76,15 @@ export function Receta({ infoReceta }) {
                         <Ingrediente key={indice} nombre={ingrediente} />
                     )}
                 </section>
-
-                {/* Botón con lógica de favoritos */}
                 <button
                     onClick={handleAñadirFavorito}
                     disabled={cargando || esFavorita}
                     className={esFavorita ? 'favorita-activa' : ''}
                 >
                     {cargando ? 'Añadiendo...' :
-                        esFavorita ? '★ Añadida a favoritos' :
-                            '☆ Añadir a favoritos'}
+                        esFavorita ? 'Añadida a favoritos' :
+                            'Añadir a favoritos'}
                 </button>
-
-                {/* Mostrar mensajes de feedback */}
                 {mensaje && (
                     <div className={`mensaje ${mensaje.includes('¡') ? 'exito' : 'error'}`}>
                         {mensaje}

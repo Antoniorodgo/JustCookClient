@@ -26,18 +26,17 @@ export const MisRecetas = () => {
         setLoading(false)
       }
     }
-
     conseguirReceteasFavoritas()
   }, [])
 
   const variable = 'funcioooonaaa esto de los props'
 
-  // 🔵 Mostrar mensaje mientras carga
+  // Mostrar mensaje mientras carga
   if (loading) {
     return <h2 className="cargando-recetas">Cargando recetas...</h2>
   }
 
-  // 🔴 Si no hay recetas
+  // Si no hay recetas
   if (!loading && recetasFavoritas.length === 0) {
     return <h3 className="sin-recetas">No tienes recetas favoritas todavia.</h3>
   }

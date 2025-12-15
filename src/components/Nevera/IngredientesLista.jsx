@@ -7,13 +7,13 @@ export function IngredientesLista({ ingredientes, onDelete, loadingDelete }) {
     let ingredientesArray = [];
 
     if (ingredientes && ingredientes.ingredientes && Array.isArray(ingredientes.ingredientes)) {
-        // Caso 1: {count: X, ingredientes: [...]}
+
         ingredientesArray = ingredientes.ingredientes;
     } else if (Array.isArray(ingredientes)) {
-        // Caso 2: Array directo
+
         ingredientesArray = ingredientes;
     } else if (ingredientes) {
-        // Caso 3: Objeto individual o algo inesperado
+
         ingredientesArray = [ingredientes];
     }
 
