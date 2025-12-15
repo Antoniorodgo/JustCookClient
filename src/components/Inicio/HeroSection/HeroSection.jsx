@@ -33,7 +33,7 @@ export const HeroSection = () => {
         const recetasQuePuedoHacer = todasLasRecetas.filter(receta => {
             if (!receta.ingredientes || !Array.isArray(receta.ingredientes)) return false;
 
-           
+
             return receta.ingredientes.some(ingredienteReceta => {
                 const nombreIng = ingredienteReceta.toLowerCase().trim();
                 return ingredientesActuales.some(ingNevera =>
@@ -63,7 +63,7 @@ export const HeroSection = () => {
                     <h2>Recetas que puedes hacer con tu nevera</h2>
 
                     <p>
-                        Tienes {ingredientesNevera.length} ingrediente(s) | 
+                        Tienes {ingredientesNevera.length} ingrediente(s) |
                         Recetas posibles: {recetasFiltradas.length}
                     </p>
 
@@ -80,7 +80,7 @@ export const HeroSection = () => {
             </div>
 
             <div className={`${styles.heroSide} ${styles.heroRight}`}>
-                <AsideNevera 
+                <AsideNevera
                     ingredientes={ingredientesNevera}
                     setIngredientes={setIngredientesNevera}
                 />

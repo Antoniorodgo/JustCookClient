@@ -1,6 +1,59 @@
+import { useState } from 'react';
 import Ingrediente from "../../MisRecetas/RecetaFavorita/Ingrediente/Ingrediente"
 
 export function Receta({ infoReceta }) {
+    const objetoStringUsuario = localStorage.getItem('user');
+    const objetoUsuario = JSON.parse(objetoStringUsuario);
+    const userId = objetoUsuario.id;
+
+    // Estado para controlar si la receta es favorita
+    const [esFavorita, setEsFavorita] = useState(false);
+    const [cargando, setCargando] = useState(false);
+    const [mensaje, setMensaje] = useState('');
+
+    // Función para añadir a favoritos
+    const handleAñadirFavorito = async () => {
+        // Evitar múltiples clicks
+        if (cargando || esFavorita) return;
+
+        setCargando(true);
+        setMensaje('');
+
+        try {
+            const response = await fetch(`http://localhost:3000/api/usuarios/${userId}/favoritas`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    receta_id: infoReceta.id
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setEsFavorita(true);
+                setMensaje('¡Receta añadida a favoritos!');
+                setTimeout(() => setMensaje(''), 3000);
+            } else {
+                // Manejar errores específicos
+                if (response.status === 409) {
+                    setMensaje('Esta receta ya está en tus favoritos');
+                    setEsFavorita(true);
+                } else if (response.status === 404) {
+                    setMensaje('Receta no encontrada');
+                } else {
+                    setMensaje(data.error || 'Error al añadir a favoritos');
+                }
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setMensaje('Error de conexión. Intenta nuevamente.');
+        } finally {
+            setCargando(false);
+        }
+    };
     return (
         <>
             <article className="receta">
@@ -20,9 +73,28 @@ export function Receta({ infoReceta }) {
                 </section>
                 <section>
                     <p><strong>Ingredientes: </strong></p>
-                    {infoReceta.ingredientes.map((ingrediente, indice) => <Ingrediente key={indice} nombre={ingrediente} />)}
-
+                    {infoReceta.ingredientes.map((ingrediente, indice) =>
+                        <Ingrediente key={indice} nombre={ingrediente} />
+                    )}
                 </section>
+
+                {/* Botón con lógica de favoritos */}
+                <button
+                    onClick={handleAñadirFavorito}
+                    disabled={cargando || esFavorita}
+                    className={esFavorita ? 'favorita-activa' : ''}
+                >
+                    {cargando ? 'Añadiendo...' :
+                        esFavorita ? '★ Añadida a favoritos' :
+                            '☆ Añadir a favoritos'}
+                </button>
+
+                {/* Mostrar mensajes de feedback */}
+                {mensaje && (
+                    <div className={`mensaje ${mensaje.includes('¡') ? 'exito' : 'error'}`}>
+                        {mensaje}
+                    </div>
+                )}
             </article>
         </>
     )
