@@ -6,9 +6,20 @@ export const AsideNevera = ({ ingredientes = [], setIngredientes }) => {
   const [editandoId, setEditandoId] = useState(null);
   const [nombreEditado, setNombreEditado] = useState("");
 
+  // Estados para el modal
+  const [mostrarModal, setMostrarModal] = useState(false);
+  const [mensajeModal, setMensajeModal] = useState("");
+  const [accionConfirmada, setAccionConfirmada] = useState(null);
+
+  // Función para mostrar modal de mensaje simple
+  const mostrarMensaje = (mensaje) => {
+    setMensajeModal(mensaje);
+    setMostrarModal(true);
+  };
+
   const agregarIngrediente = () => {
     const nombre = nuevoIngrediente.trim();
-    if (!nombre) return alert("¡Escribe algo!");
+    if (!nombre) return mostrarMensaje("¡Sin ingrediente no hay receta!");
 
     const nuevo = { id: Date.now(), nombre };
     setIngredientes([...ingredientes, nuevo]);
@@ -17,17 +28,33 @@ export const AsideNevera = ({ ingredientes = [], setIngredientes }) => {
 
   const editar = (id, nuevoNombre) => {
     const nombre = nuevoNombre.trim();
-    if (!nombre) return;
-    setIngredientes(ingredientes.map(ing => 
-      ing.id === id ? { ...ing, nombre } : ing
-    ));
+    if (!nombre) return mostrarMensaje("¡El nombre no puede estar vacío!");
+    setIngredientes(
+      ingredientes.map(ing =>
+        ing.id === id ? { ...ing, nombre } : ing
+      )
+    );
     setEditandoId(null);
   };
 
   const eliminar = (id) => {
-    if (confirm("¿Eliminar?")) {
+    // Mostramos modal de confirmación
+    setMensajeModal("¿Deseas eliminar el ingrediente?");
+    setAccionConfirmada(() => () => {
       setIngredientes(ingredientes.filter(ing => ing.id !== id));
-    }
+    });
+    setMostrarModal(true);
+  };
+
+  const handleAceptarModal = () => {
+    if (accionConfirmada) accionConfirmada();
+    setAccionConfirmada(null);
+    setMostrarModal(false);
+  };
+
+  const handleCancelarModal = () => {
+    setAccionConfirmada(null);
+    setMostrarModal(false);
   };
 
   return (
@@ -41,7 +68,10 @@ export const AsideNevera = ({ ingredientes = [], setIngredientes }) => {
           onKeyDown={(e) => e.key === "Enter" && agregarIngrediente()}
           placeholder="Nuevo ingrediente..."
         />
-        <button onClick={agregarIngrediente}>Añadir</button>
+
+        <button className="botonAgregar" onClick={agregarIngrediente}>
+          Añadir
+        </button>
       </div>
 
       <div className="lista">
@@ -53,28 +83,81 @@ export const AsideNevera = ({ ingredientes = [], setIngredientes }) => {
               {editandoId === ing.id ? (
                 <>
                   <input
+                    className="inputEditar"
                     value={nombreEditado}
                     onChange={(e) => setNombreEditado(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && editar(ing.id, nombreEditado)}
+                    onKeyDown={(e) =>
+                      e.key === "Enter" && editar(ing.id, nombreEditado)
+                    }
                     autoFocus
                   />
-                  <button onClick={() => editar(ing.id, nombreEditado)}>Guardar</button>
-                  <button onClick={() => setEditandoId(null)}>Cancelar</button>
+
+                  <div className="botones">
+                    <button
+                      className="botonGuardar"
+                      onClick={() => editar(ing.id, nombreEditado)}
+                    >
+                      Guardar
+                    </button>
+
+                    <button
+                      className="botonCancelar"
+                      onClick={() => setEditandoId(null)}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
                 </>
               ) : (
                 <>
-                  <span>{ing.nombre}</span>
-                  <button onClick={() => {
-                    setEditandoId(ing.id);
-                    setNombreEditado(ing.nombre);
-                  }}>Editar</button>
-                  <button onClick={() => eliminar(ing.id)}>Eliminar</button>
+                  <span className="nombreIng">{ing.nombre}</span>
+
+                  <div className="botones">
+                    <button
+                      className="botonEditar"
+                      onClick={() => {
+                        setEditandoId(ing.id);
+                        setNombreEditado(ing.nombre);
+                      }}
+                    >
+                      Editar
+                    </button>
+
+                    <button
+                      className="botonEliminar"
+                      onClick={() => eliminar(ing.id)}
+                    >
+                      Eliminar
+                    </button>
+                  </div>
                 </>
               )}
             </div>
           ))
         )}
       </div>
+
+      {mostrarModal && (
+        <div className="modalFondo">
+          <div className="modalContenido">
+            <p>{mensajeModal}</p>
+            {accionConfirmada ? (
+              <div className="botones">
+                <button className="botonAceptar" onClick={handleAceptarModal}>
+                  Aceptar
+                </button>
+                <button className="botonCancelar" onClick={handleCancelarModal}>
+                  Cancelar
+                </button>
+              </div>
+            ) : (
+              <button className="botonAceptar" onClick={() => setMostrarModal(false)}>
+                Aceptar
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

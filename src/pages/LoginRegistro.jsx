@@ -1,6 +1,6 @@
 import Registro from "../components/LoginRegistro/Registro/Registro";
 import InicioSesion from "../components/LoginRegistro/InicioSesion/InicioSesion";
-import '../components/LoginRegistro/Registro/registro.css'; // CSS externo
+import '../components/LoginRegistro/Registro/registro.css'; 
 
 export const LoginRegistro = () => {
     return (
