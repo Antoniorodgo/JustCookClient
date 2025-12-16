@@ -21,12 +21,12 @@ export const HeroCarrusel = () => {
             subtitle: "No desperdicies los ingredientes de tu nevera"
         },
         {
-        id: 3,
-        type: "image",
-        src: "https://images.unsplash.com/photo-1601050692646-4ed5b21a1f3e?auto=format&fit=crop&w=1600&q=80",
-        title: "Come variado y saludable",
-        subtitle: "Recetas balanceadas y fáciles"
-    }
+            id: 3,
+            type: "image",
+            src: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            title: "Come variado y saludable",
+            subtitle: "Recetas balanceadas y fáciles"
+        }
     ];
 
 

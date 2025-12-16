@@ -51,7 +51,7 @@ export const MisRecetas = () => {
   };
   return (
     <>
-      {recetasFavoritas.map((receta, indice) =>
+      {recetasFavoritas.map((receta) =>
         <RecetaFavorita
           key={receta.id}
           infoReceta={receta}

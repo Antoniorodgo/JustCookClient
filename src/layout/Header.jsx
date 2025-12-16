@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import "../index.css";
 
@@ -9,10 +9,9 @@ export const Header = () => {
 
   useEffect(() => {
     const userLS = localStorage.getItem('user');
-    if (userLS) {
-      setUsuario(JSON.parse(userLS));
-    }
-  }, []);
+    setUsuario(userLS ? JSON.parse(userLS) : null);
+  }, [location.pathname]);
+
 
   // Función para cerrar sesión
   const handleLogout = () => {

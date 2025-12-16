@@ -55,7 +55,7 @@ export function Nevera() {
     }, [userId]);
 
     const handleAdd = async (nuevoIngrediente) => {
-        if (!nuevoIngrediente.nombre.trim() || !nuevoIngrediente.cantidad) {
+        if (!nuevoIngrediente.nombre || !nuevoIngrediente.cantidad) {
             setError("Por favor, ingresa nombre y cantidad");
             return;
         }
@@ -76,12 +76,11 @@ export function Nevera() {
 
             console.log("Respuesta del POST:", res.data);
 
-            // ACTUALIZACIÓN DEL ESTADO - CORREGIDO
             if (res.data && res.data.ingrediente_usuario) {
                 // Crear un objeto completo con el nombre que enviamos
                 const ingredienteCompleto = {
                     ...res.data.ingrediente_usuario,
-                    nombre: nuevoIngrediente.nombre  // ← AÑADIMOS EL NOMBRE AQUÍ
+                    nombre: nuevoIngrediente.nombre
                 };
 
                 console.log("Ingrediente completo para añadir:", ingredienteCompleto);
@@ -90,11 +89,8 @@ export function Nevera() {
                     // Normalizar el estado anterior
                     const prevArray = normalizarIngredientes(prev);
 
-                    // Añadir el nuevo ingrediente CON NOMBRE
                     const nuevoArray = [...prevArray, ingredienteCompleto];
 
-                    // Si el estado anterior tenía estructura {ingredientes: [...]}
-                    // mantener esa estructura
                     if (prev && prev.ingredientes && Array.isArray(prev.ingredientes)) {
                         return {
                             ...prev,
@@ -124,7 +120,6 @@ export function Nevera() {
         }
     };
 
-    // Función para eliminar un ingrediente - SIN CAMBIOS
     const handleDelete = async (index) => {
         console.log("Eliminar ingrediente en índice:", index);
 
